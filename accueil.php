@@ -68,14 +68,23 @@
                 </div>
             </div>
             <div class="section1_partition3">
-                <form method="post" action="connexion.php">
-                    <p>Se connecter</p>
-                    <label for="ID">identifiant:</label>
-                    <input type="email" name="ID" id="ID" placeholder="exemple: prenom.nom@omnes.fr"><br>
-                    <label for="MdP">password:</label>
-                    <input type="password" name="MdP" id="MdP"><br>
+            <form method="post" action="connexion.php">
+                <p id=select>
+                    Selection du role :<br>
+                    <input type="radio" name="selct" value="1">
+                    <label for="ALL">Etudiant</label><br>
+                    <input type="radio" name="selct" value="2">
+                    <label for="ASC">Professeur</label><br>
+                    <input type="radio" name="selct" value="3">
+                    <label for="DESC">Admin</label><br>
+                </p>
+                    <p>Texte à l'intérieur du formulaire</p>
+                    <label for="ID">ID:</label>
+                    <input type="text" name="ID" id="ID"><br>
+                    <label for="MdP">MdP:</label>
+                    <input type="text" name="MdP" id="MdP"><br>
                     <input type="submit" value="Valider">
-                </form>
+            </form>
             </div>
 
 
