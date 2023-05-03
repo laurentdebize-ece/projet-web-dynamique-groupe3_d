@@ -31,17 +31,11 @@
                     if ($donnees['mdp'] == $_POST['MdP'] && $donnees['mailAdmin'] == $_POST['ID'] && $trouve==0) {
                         echo "<p> connexion!!!</p>";
                         $trouve=1;
-                    } else if ($donnees['mdp'] == $_POST['MdP'] && $trouve==0 || $donnees['mailAdmin'] == $_POST['ID'] && $trouve==0 ) {
-                        echo "<p> identifiant ou mot de passe incorrect</p>";
-                        echo '<p><a href="accueil.php">
-                        Cliquez ici pour revenir à la page précédente</a></p>';
-                        $trouve=1;
-                    }
-
+                    } 
                 }
                 if($trouve==0){
                     echo "<p> Mauvais ID ou MdP</p>";
-                    echo '<p> <a href="index.php">
+                    echo '<p> <a href="accueil.php">
                     Cliquez ici pour revenir à la page précédente</a></p>';
                 }
             }
