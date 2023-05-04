@@ -78,11 +78,10 @@
                     <input type="radio" name="selct" value="3">
                     <label for="DESC">Admin</label><br>
                 </p>
-                    <p>Texte à l'intérieur du formulaire</p>
                     <label for="ID">ID:</label>
-                    <input type="text" name="ID" id="ID"><br>
+                    <input type="email" name="ID" id="ID" placeholder="exemple: nom.prenom@omnes.fr"><br>
                     <label for="MdP">MdP:</label>
-                    <input type="text" name="MdP" id="MdP"><br>
+                    <input type="password" name="MdP" id="MdP"><br>
                     <input type="submit" value="Valider">
             </form>
             </div>

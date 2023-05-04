@@ -37,7 +37,7 @@
                         }
                         if($trouve==0){
                             echo "<p> Mauvais ID ou MdP</p>";
-                            echo '<p><a href="index.php">
+                            echo '<p><a href="accueil.php">
                             Cliquez ici pour revenir à la page précédente</a></p>';
                         }
                     }
@@ -53,7 +53,7 @@
                         }
                         if($trouve==0){
                             echo "<p> Mauvais ID ou MdP</p>";
-                            echo '<p><a href="index.php">
+                            echo '<p><a href="accueil.php">
                             Cliquez ici pour revenir à la page précédente</a></p>';
                         }
                     }
@@ -69,7 +69,7 @@
                         }
                         if($trouve==0){
                             echo "<p> Mauvais ID ou MdP</p>";
-                            echo '<p><a href="index.php">
+                            echo '<p><a href="accueil.php">
                             Cliquez ici pour revenir à la page précédente</a></p>';
                         }
                     }
