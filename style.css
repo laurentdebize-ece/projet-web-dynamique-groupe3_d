@@ -112,7 +112,7 @@ nav ul li a:hover{
 .carte{
     display:grid; 
     padding: 5px;
-    grid-template-rows: 3fr 1fr ;
+    grid-template-rows: 4fr 1fr ;
     background-color: rgb(62, 165, 255);
     border-radius: 10px;
 }
