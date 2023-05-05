@@ -23,7 +23,7 @@ if(isset($_GET['error']) && $_GET['error'] ==1){
     <div class="container" id="container">
 	  <div class="form-container sign-up-container">
 		<form action="connexion.php" method="post">
-            <h1>Créer ton compte</h1>
+            <h1>Administrateur ?</h1>
             <!--<div class="social-container">
                 <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
@@ -31,15 +31,14 @@ if(isset($_GET['error']) && $_GET['error'] ==1){
             </div>
             <span> or use your email for registration</span>-->
             <br>
-            <input type="text" placeholder="Nom" name="nom">
-            <input type="email" placeholder="Email" name="mail">
-            <input type="password" placeholder="Mot de passe" name="mdp">
-            <button type="submit" value="connexion">S'inscrire</button>
+            <input type="email" placeholder="prenom.nom@omnes.fr" name="ID">
+            <input type="password" placeholder="Mot de passe" name="MdP">
+            <button type="submit" value="connexion">Connexion</button>
 		</form>
 	  </div>
 	  <div class="form-container sign-in-container">
 		<form action="connexion.php" method="post">
-		  <h1>Connecte-toi</h1>
+		  <h1>Étudiant ? </h1>
 		 <!--<div class="social-container">
 			<a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
 			<a href="#" class="social"><i class="fa fa-google-plus"></i></a>
@@ -47,8 +46,8 @@ if(isset($_GET['error']) && $_GET['error'] ==1){
 		  </div>
 		  <span>or use your account</span>-->
           <br>
-		  <input type="text" placeholder="Nom" name="Nom">
-		  <input type="password" placeholder="Mot de passe" name="mdp">
+         <input type="email" name="ID" id="ID" placeholder="nom.prenom@omnes.fr">
+		  <input type="password" placeholder="Mot de passe" name="MdP">
 		  <a href="#" class="forgot-password">Mot de passe oublié ?</a>
 		  <button type="submit" value="Connexion">Connexion</button>
 		</form>
