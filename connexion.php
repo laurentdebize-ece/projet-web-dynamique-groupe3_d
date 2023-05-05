@@ -24,13 +24,19 @@
     <?php
             $trouve=0;
             $value= $_POST['role'];
+            $login= $_POST['ID']; 
+            $pwd= $_POST['MdP'];
             switch ($value){
                 case 1 : {
                     $response = $bdd->query('SELECT * FROM etudiant');
-                    if(isset($_POST['MdP'], $_POST['ID'])){
+                    if(isset($pwd, $login)){
                         while ($donnees = $response->fetch()) {
-                            if ($donnees['mdp'] == $_POST['MdP'] && $donnees['mailEtu'] == $_POST['ID'] && $trouve==0) {
+                            if ($donnees['mdp'] == $pwd && $donnees['mailEtu'] == $login && $trouve==0) {
+                                echo "Bonjour ! Bienvenu sur ton compte omnes skills";
+                                echo $donnees['prenomEtu']; 
                                 header("Location: etudiant.php");
+                                $response = $bdd->query('SELECT * FROM etudiant WHERE mdp = "' . $pwd . '" and mailEtu="' . $login . '"');
+                            
                                 $trouve=1;
                             }
                         }
