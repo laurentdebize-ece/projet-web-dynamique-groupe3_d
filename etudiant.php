@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -64,7 +65,7 @@
                 </div>
             </div>
             <div class="section1_partition3">
-                <h3>Le planning</h3>    
+                <h3>Bonjour <?php echo $_SESSION['nom']?> ! Bienvenu sur ta page omnes Skills !  </h3>    
             </div>
 
 

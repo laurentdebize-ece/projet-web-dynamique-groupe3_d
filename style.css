@@ -62,7 +62,7 @@ nav ul{
     justify-content: center;
     align-items: center;
     gap:10px; 
-    list-style: none;
+    list-style-type: none;
     transform: translateX(-40px);
 
 }

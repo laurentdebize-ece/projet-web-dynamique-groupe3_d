@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -23,24 +24,19 @@
         die('Erreur : ' . $e->getMessage());
     }
     ?>
+
     <h1>Mon compte</h1>
-    <?php
-    $response =  $response = $bdd->query('SELECT * FROM etudiant');
+    <p>
+    <form>
+        Nom: <?php echo $_SESSION['nom'] ?> <br>
+        Prenom : <?php echo $_SESSION['prenom'] ?> <br>
+        Mon identifiant : <?php echo $_SESSION['mail'] ?> <br>
+        Mon mot de passe: <?php echo $_SESSION['mdp'] ?> <br>
+        <button type="submit" value="m'auto-évaluer" name=evaluation>
+            <a href="etudiant.php"><button type="submit" value="retour"></a>
+    </form>
+    </p>
 
-    while ($donnees = $response->fetch()) {
-    ?>
-        <p>
-            Nom: <?php echo $donnees['nomEtu']; ?><br>
-            Prenom : <?php echo $donnees['prenomEtu']; ?><br>
-            Mon identifiant : <?php echo $donnees['mailEtu']; ?> <br>
-             Mon mot de passe: <?php echo $donnees['mdp'] ?> ; <br>
-                <input type="submit" value="m'auto-évaluer" name=evaluation>
-                <a href="etudiant.php"><input type="button" value="retour"></a> 
-        </p>
-
-    <?php
-    }
-    ?>
 
 </body>
 

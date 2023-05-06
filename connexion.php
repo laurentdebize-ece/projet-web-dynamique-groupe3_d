@@ -32,11 +32,12 @@
                     if(isset($pwd, $login)){
                         while ($donnees = $response->fetch()) {
                             if ($donnees['mdp'] == $pwd && $donnees['mailEtu'] == $login && $trouve==0) {
-                                echo "Bonjour ! Bienvenu sur ton compte omnes skills";
-                                echo $donnees['prenomEtu']; 
-                                header("Location: etudiant.php");
-                                $response = $bdd->query('SELECT * FROM etudiant WHERE mdp = "' . $pwd . '" and mailEtu="' . $login . '"');
-                            
+                                session_start(); 
+                                $_SESSION ['nom'] = $donnees['nomEtu']; 
+                                $_SESSION ['prenom'] = $donnees['prenomEtu']; 
+                                $_SESSION ['mail'] = $donnees['mailEtu']; 
+                                $_SESSION ['mdp'] = $donnees['mdp']; 
+                                header("Location: etudiant.php"); 
                                 $trouve=1;
                             }
                         }
@@ -53,6 +54,11 @@
                         while ($donnees = $response->fetch()) {
                             if ($donnees['mdp'] == $_POST['MdP'] && $donnees['mailProf'] == $_POST['ID'] && $trouve==0) {
                                 header("Location: prof.php");
+                                session_start(); 
+                                $_SESSION ['nom'] = $donnees['nomProf']; 
+                                $_SESSION ['prenom'] = $donnees['prenomProf']; 
+                                $_SESSION ['mail'] = $donnees['mailProf']; 
+                                $_SESSION ['mdp'] = $donnees['mdp']; 
                                 $trouve=1;
 
                             }
@@ -70,6 +76,11 @@
                         while ($donnees = $response->fetch()) {
                             if ($donnees['mdp'] == $_POST['MdP'] && $donnees['mailAdmin'] == $_POST['ID'] && $trouve==0) {
                                 header("Location: admin.php");
+                                session_start(); 
+                                $_SESSION ['nom'] = $donnees['nomAdmin']; 
+                                $_SESSION ['prenom'] = $donnees['prenomAdmin']; 
+                                $_SESSION ['mail'] = $donnees['mailAdmin']; 
+                                $_SESSION ['mdp'] = $donnees['mdp']; 
                                 $trouve=1;
                             }
                         }

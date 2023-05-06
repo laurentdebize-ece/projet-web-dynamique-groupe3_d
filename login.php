@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<title>Login Form</title>
-<link rel="stylesheet" href="styleLogin.css">
+	<link rel="stylesheet" href="styleLogin.css">
 </head>
 
 <body>
@@ -19,21 +19,20 @@
 				<input type="email" placeholder="prenom.nom@omnes.fr" name="ID">
 				<input type="password" placeholder="Mot de passe" name="MdP">
 				<button type="submit" value="connexion">Connexion</button>
-			<!-- </form> -->
+				<!-- </form> -->
 		</div>
 		<div class="form-container sign-in-container">
 			<!-- <form method="post" action="connexion.php"> -->
-				<h1>Qui-es-tu ? </h1>
-				<br>
-				<p id=select>
-					Selection du role : <br>
-					<div><input type="radio" name="role" value="1">
-					<label for="ALL">Etudiant</label><br></div>
-					<input type="radio" name="role" value="2">
-					<label for="ASC">Professeur</label><br>
-					<input type="radio" name="role" value="3">
-					<label for="DESC">Admin</label>
-				</p>
+			<h1>Qui-es-tu ? </h1>
+			<br>
+			<p id=choix>
+				<input type="radio" name="role" value="1">
+				<label for="1">Etudiant</label>
+				<input type="radio" name="role" value="2">
+				<label for="2">Professeur</label>
+				<input type="radio" name="role" value="3">
+				<label for="3">Admin</label>
+			</p>
 			</form>
 		</div>
 		<div class="overlay-container">
