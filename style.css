@@ -26,6 +26,7 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(images/bat.jpg);
+    background-color: rgb(39, 107, 174);
    
 }
 .section1_partition1{
@@ -58,7 +59,6 @@ nav{ /* les liens */
     text-align: center;
 }
 nav ul{
-    display: flex; 
     justify-content: center;
     align-items: center;
     gap:10px; 
@@ -75,6 +75,7 @@ nav ul li a{
     transition: all .3s ease; 
 }
 nav ul li a:hover{
+    background-color:rgb(170, 212, 255) ;
     color: black;
 }
 .welcom_mess{
@@ -134,5 +135,102 @@ h3{
 h3:hover{
     color: black;
 }
+.section1_partition3{
+    width: 60%;
+    height: 80%;
+    background-color: rgb(118,118,118);
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
+
+}
+#enteteCalendar{
+    width: 100%;
+    height: 18%;
+    background-color: rgb(124,124,124);
+    display: flex; 
+    flex-direction: column;
+}
+#calendar {
+    width: 100%;
+    height: 66.666%;
+    color: white; 
+    margin:0; 
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+}
+#avantEtapres{
+width: 100%;
+height: 33.333%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(60,60,60);
+}
+.calendarBT{
+    width: 40%;
+    height: 100%;
+    border: none; 
+    background-color: rgb(90,90,90);
+    color:white; 
+    outline:none; 
+    transition:0.2s; 
+}
+.calendarBT:hover{
+    color: rgb(75,75,75);
+}
+#cldBoite{
+    width: 100%; 
+    height:82%;
+    background-color: rgb(143,143,143);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+#jours {
+    width: 100%;
+    height:10%; 
+    display: flex; 
+    justify-content:center; 
+    align-items: center;
+}
+.jour {
+    width: 100%;
+    height:100%; 
+    display: flex; 
+    justify-content:center; 
+    align-items: center;
+    color: white; 
+    margin: 0;
+    font-size: 10px;
+}
+.semaine{
+    width: 100%;
+    height:100%; 
+    display: flex; 
+    justify-content:center; 
+    align-items: center;
+}
+.case{
+    width: 100%;
+    height:100%; 
+    display: flex; 
+    justify-content:center; 
+    align-items: center;
+    color: white; 
+    margin: 0;
+    font-size: 10px;
+}
+.case:hover{
+    background-color: rgb(110,110,110);
+}
+
+
+
+
+
+
+
+
 
 
