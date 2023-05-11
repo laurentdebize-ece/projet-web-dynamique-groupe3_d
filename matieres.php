@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Accueil</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="matiere.css">
 </head>
 
 <body>
@@ -25,29 +26,32 @@
     ?>
     <h1>Mes matières</h1>
     <?php
-    $response =  $response = $bdd->query('SELECT * FROM matieres');
+    $matiere = $bdd->query('SELECT * FROM etumat AS em, matieres AS m, etudiant AS e WHERE em.mailEtu=e.mailEtu 
+    AND em.IdMat= m.idMat');
 
-    while ($donnees = $response->fetch()) {
+    while ($donnees = $matiere->fetch()) {
     ?>
-        <ol>
-            <li> <?php echo $donnees['nomMat']; ?> </li>
-        </ol>
+        <ul>
+            <li> <?php echo $donnees['nomMat']; ?>
+                <h4>Mes compétences associées</h4>
+                <?php
+                $competence = $bdd->query('SELECT * FROM matieres AS m, matcomp AS mc, competences AS c WHERE m.idMat = "' . $donnees['idMat'] . '" AND mc.IdMat= m.idMat AND c.idCompetence=mc.IdCompetence');
+                while ($donnees = $competence->fetch()) {
+                ?>
+                    <ul>
+                        <li> <?php echo $donnees['nomCompetence']; ?> </li>
+                    </ul>
+            </li>
+        <?php
+                }
+        ?>
+        </ul>
     <?php
     }
 
     ?>
-    <h2>Mes compétences associées</h2>
-    <?php
-    $response =  $response = $bdd->query('SELECT * FROM competences');
 
-    while ($donnees = $response->fetch()) {
-    ?>
-        <ol>
-            <li> <?php echo $donnees['nomCompetence']; ?> </li>
-        </ol>
-    <?php
-    }
-    ?>
+
 </body>
 
 </html>

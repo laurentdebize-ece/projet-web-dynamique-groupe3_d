@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Accueil</title>
+    <title>Accueil_etudiant</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,13 +20,16 @@
                     </div>
                     <nav>
                         <ul>
+                            <li> <a>Home</a> </li>
                             <li><a href="matieres.php">Mes matières</a></li>
-                            <li><a href=".php">Mes évaluations</a></li>
+                            <li><a href="eval.php">Mes évaluations</a></li>
                             <li><a href=".php">Evaluations à venir</a></li>
+                            <li><a href="mon_espace.php">Mon espace</a></li>
                         </ul>
                     </nav>
                 </div>
                 <h1 class=" welcom_mess">Omnes Skills</h1>
+
             </div>
             <div class="section1_partition2">
                 <div class="carte-container">
@@ -34,7 +37,9 @@
 
                         <div class="carte_img carte_img1">
 
-                        <a href="matieres.php"><h3>Mes matières</h3></a>
+                            <a href="matieres.php">
+                                <h3>Mes matières</h3>
+                            </a>
 
                         </div>
 
@@ -42,7 +47,9 @@
                     <div class="carte carte2">
 
                         <div class="carte_img carte_img2">
-                        <a href=".php"><h3>Mes évaluations</h3></a>
+                            <a href="eval.php">
+                                <h3>Mes évaluations</h3>
+                            </a>
                         </div>
 
                     </div>
@@ -50,14 +57,17 @@
 
                         <div class="carte_img carte_img3">
 
-                        <a href=".php"><h3>Évaluations à venir</h3></a>
+                            <a href="nextEval.php">
+                                <h3>Évaluations à venir</h3>
+                            </a>
 
                         </div>
                     </div>
                     <div class="carte carte4">
 
                         <div class="carte_img carte_img4">
-                        <a href="mon_espace.php"><h3>Mon espace</h3>
+                            <a href="mon_espace.php">
+                                <h3>Mon espace</h3>
                         </div>
 
                     </div>
@@ -65,11 +75,15 @@
                 </div>
             </div>
             <div class="section1_partition3">
-                <h3>Bonjour <?php echo $_SESSION['nom']?> ! Bienvenu sur ta page omnes Skills !  </h3>    
             </div>
-
-
         </section>
+
+
+
+
+
+
+        </div>
     </header>
 </body>
 
