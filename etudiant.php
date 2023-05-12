@@ -23,7 +23,7 @@
                             <li> <a>Home</a> </li>
                             <li><a href="matieres.php">Mes matières</a></li>
                             <li><a href="eval.php">Mes évaluations</a></li>
-                            <li><a href=".php">Evaluations à venir</a></li>
+                            <li><a href="eval_a_venir.php">Evaluations à venir</a></li>
                             <li><a href="mon_espace.php">Mon espace</a></li>
                         </ul>
                     </nav>
@@ -57,7 +57,7 @@
 
                         <div class="carte_img carte_img3">
 
-                            <a href="nextEval.php">
+                            <a href="eval_a_venir.php">
                                 <h3>Évaluations à venir</h3>
                             </a>
 

@@ -26,30 +26,33 @@
     ?>
     <h1>Mes matières</h1>
     <?php
-    $matiere = $bdd->query('SELECT * FROM etumat AS em, matieres AS m, etudiant AS e WHERE em.mailEtu=e.mailEtu 
-    AND em.IdMat= m.idMat');
+    $matiere = $bdd->query('SELECT * FROM etumat AS em, matieres AS m, matcomp AS mc, competences AS c, etudiant AS e WHERE em.IdEtu=e.IdEtudiant 
+    AND em.IdMat= m.idMat AND mc.IdMat=m.idMat AND c.idCompetence=mc.IdCompetence ORDER BY m.nomMat');
 
     while ($donnees = $matiere->fetch()) {
     ?>
         <ul>
             <li> <?php echo $donnees['nomMat']; ?>
-                <h4>Mes compétences associées</h4>
-                <?php
-                $competence = $bdd->query('SELECT * FROM matieres AS m, matcomp AS mc, competences AS c WHERE m.idMat = "' . $donnees['idMat'] . '" AND mc.IdMat= m.idMat AND c.idCompetence=mc.IdCompetence');
-                while ($donnees = $competence->fetch()) {
-                ?>
-                    <ul>
-                        <li> <?php echo $donnees['nomCompetence']; ?> </li>
-                    </ul>
+                <h4>Mes compétences associées</h4>           
+                <?php 
+                $comp= $donnees['nomCompetence']; 
+                ?> 
+                <ul>
+                    <li> <?php echo $donnees['nomCompetence']; ?> </li>      
+                <?php 
+                while (($donnees['nomCompetence'])!=$comp){
+                    ?>
+                    <li><?php echo $donnees['nomCompetence']; ?></li> 
+            <?php     
+            }
+                  ?>  
+                </ul>
             </li>
-        <?php
-                }
-        ?>
+    
         </ul>
-    <?php
-    }
-
-    ?>
+        <?php     
+            }
+                  ?>
 
 
 </body>

@@ -11,6 +11,8 @@
 
 <body>
     <?php
+    // pour recuperer la date du jour 
+    $date = time(); 
     try {
         $bdd = new PDO(
             'mysql:host=localhost;dbname=omnes_skills;
@@ -23,19 +25,30 @@
         die('Erreur : ' . $e->getMessage());
     }
     ?>
-    <h1>Mes evaluations</h1>
+    <h1>Planning des évaluations</h1>
     <?php
-   $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec, etudiant AS e, competences AS c,  professeurs AS p WHERE ev.IdEtu=e.IdEtudiant  
-    AND ev.idEval= ec.idEval AND c.idCompetence = ec.idComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv ORDER BY ev.date ');
+    // on recupere toutes les evals qui ne sont pas encore passées
+    $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec, etudiant AS e, competences AS c,  professeurs AS p WHERE ev.date > "'.date("Y-m-d", $date).'" AND ev.IdEtu=e.idEtudiant  
+    AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv ORDER BY ev.date ');
    while ($donnees = $evaluation->fetch()) {
+    $eval = array(); 
+    $eval['date']= $donnees['date']; 
+    $eval['comp']= $donnees['nomCompetence']; 
+    $eval['prof']= $donnees['prenomProf'].$donnees['nomProf']; 
+    $eval['progression']= $donnees['progression']; 
+    $eval['niv']= $donnees['niv']; 
+    foreach ($eval as $val){
+        echo $val ; 
+    }
     ?>
         <ul>
             <li> Date : <?php echo $donnees['date']; ?> 
                 Compétence évaluée : <?php echo $donnees['nomCompetence']; 
                                                  ?> 
-                Professeur(s) en charge : <?php echo $donnees['prenomProf']." ".$donnees['nomProf']; 
+                Professeur(s) en charge : <?php  echo $donnees['prenomProf']." ".$donnees['nomProf']; 
                                                  ?> 
-                Niveau : <?php switch($donnees['niv']){
+                Niveau : <?php 
+                switch($donnees['niv']){
                     case 0: {
                         echo "NON EVALUÉ"; 
                         break; 
