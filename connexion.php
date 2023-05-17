@@ -37,6 +37,7 @@
                                 $_SESSION ['prenom'] = $donnees['prenomEtu']; 
                                 $_SESSION ['mail'] = $donnees['mailEtu']; 
                                 $_SESSION ['mdp'] = $donnees['mdp']; 
+                                $_SESSION['id'] = $donnees['IdEtudiant']; 
                                 header("Location: etudiant.php"); 
                                 $trouve=1;
                             }
@@ -59,6 +60,7 @@
                                 $_SESSION ['prenom'] = $donnees['prenomProf']; 
                                 $_SESSION ['mail'] = $donnees['mailProf']; 
                                 $_SESSION ['mdp'] = $donnees['mdp']; 
+                                $_SESSION['id'] = $donnees['IdProf']; 
                                 $trouve=1;
 
                             }
