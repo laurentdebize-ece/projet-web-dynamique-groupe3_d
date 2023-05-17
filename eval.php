@@ -25,7 +25,7 @@
     ?>
     <h1>Mes evaluations</h1>
     <?php
-   $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec, etudiant AS e, competences AS c,  professeurs AS p WHERE ev.IdEtu=e.IdEtudiant  
+   $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec, competences AS c,  professeurs AS p WHERE ev.IdEtu="'.$_SESSION['id'].'"  
     AND ev.idEval= ec.idEval AND c.idCompetence = ec.idComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv ORDER BY ev.date ');
    while ($donnees = $evaluation->fetch()) {
     ?>

@@ -28,7 +28,7 @@
     <h1>Planning des évaluations</h1>
     <?php
     // on recupere toutes les evals qui ne sont pas encore passées
-    $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec, etudiant AS e, competences AS c,  professeurs AS p WHERE ev.date > "'.date("Y-m-d", $date).'" AND ev.IdEtu=e.idEtudiant  
+    $evaluation = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c,  professeurs AS p WHERE ev.date > "'.date("Y-m-d", $date).'" AND ev.IdEtu="'.$_SESSION['id'].'"  
     AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv ORDER BY ev.date ');
    while ($donnees = $evaluation->fetch()) {
     $eval = array(); 
