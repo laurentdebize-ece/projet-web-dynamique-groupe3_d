@@ -50,7 +50,7 @@
 
                         <div class="carte_img carte_img3">
 
-                        <a href="competences.php"><h3>Modifier une compétences</h3></a>
+                        <a href="navigationPromoProf.php"><h3>Modifier une compétences</h3></a>
 
                         </div>
                     </div>
