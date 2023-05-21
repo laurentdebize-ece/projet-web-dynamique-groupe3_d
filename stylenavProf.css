@@ -1,0 +1,40 @@
+[id|="c"]{
+    display: none;
+  }
+  [class|="c"]{
+    display: none;
+  }
+  [class|="clist"]{
+    display: none;
+  }
+  #menuDeroulePromo{
+    height: 600px;
+    overflow: auto;
+  }
+  [id|="m"]{
+    display: none;
+  }
+  [class|="e"]{
+    display: none;
+  }
+  [class|="etu"]{
+    display: none;
+  }
+  #ClassNav{
+    display: none;
+  }
+  [class|="mlist"]{
+    display: none;
+  }
+  #MatiereNav{
+    display: none;
+  }
+  [id|="mNom"]{
+    display: none;
+  }
+  [class|="comp"]{
+    display: none;
+  }
+  #comp{
+    display: none;
+  }

@@ -72,6 +72,7 @@
                                 <a href=".php">
                                     <h3>Programmer une évaluation</h3>
                                 </a>
+                        <a href="navigationPromoProf.php"><h3>Modifier une compétences</h3></a>
 
                             </div>
                         </div>
