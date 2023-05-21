@@ -1,90 +1,25 @@
 * {  /* enelver toutes les marges intérieurs et ext des éléments */
-    margin:0; 
-    padding: 0;
     box-sizing: border-box;
 
 }
 body {
+    padding: 10px;
     font-size: 100%;
-}
-body {
-  line-height: 1.5;
-}
-header {
-    position : relative; 
-    height: 100vh;
-    width: 100%; 
-    display: grid; 
-    grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
-}
-
-#section1 {
-    position: absolute; 
-    top:0; 
-    left:0; 
-    height:50%; 
-    width: 100%;
-    display: grid;
-    flex-wrap: wrap;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(images/bat.jpg);
-    background-color: rgb(39, 107, 174);
-   
-}
-.section1_partition1{
-    position: relative;
-}
-.partition1_head{
-    position: relative; 
-    height: auto; 
-    width: 100%; 
-    background-color: transparent;
-    display: flex; 
-    justify-content: space-between
-
-
+    background-color:rgb(168, 212, 255); 
 }
 .img{
-    height:30px; 
-    width: 125px; 
-    transform: translateY(10px); 
-    background-position: center;
+    float: left;
+    position: relative; 
+    background-color: transparent;
+    display: flex; 
+    justify-content: space-between; 
+    height:35px; 
+    width: 140px; 
+    transform: translateY(0px); 
+    background-position: left;
     background-size: cover;
     background-repeat: no-repeat; 
     background-image: url(images/logo.png);
-}
-nav{ /* les liens */
-    display: flex; 
-    justify-content: center;
-    transform: translateX(40px);
-    align-items: flex-start;
-    text-align: center;
-}
-nav ul{
-    justify-content: center;
-    align-items: center;
-    gap:10px; 
-    list-style-type: none;
-    transform: translateX(-40px);
-
-}
-nav ul li a{
-    display: block; 
-    font-size: 1rem;
-    font-weight: bolder;
-    text-decoration: none;
-    font-family: sans-serif;
-    color: rgb(214, 214, 228); 
-    transition: all .3s ease; 
-}
-nav ul li a:hover{
-    background-color:rgb(170, 212, 255) ;
-    color: black;
 }
 .welcom_mess{
     position: relative;
@@ -102,70 +37,36 @@ nav ul li a:hover{
     -webkit-text-stroke: 0;
 
 }
-.section1_partition2{
-    position: relative;
+nav{ /* les liens */
     display: flex; 
     justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-color: rgb(39, 107, 174);
-   
-}
-.carte-container{
-    height:80%; 
-    width: 60%;
-    display: grid; 
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: 1fr ;
-    gap:10px; 
-
-}
-.carte{
-    display:grid; 
-    padding: 5px;
-    grid-template-rows: 4fr 1fr ;
-    background-color: rgb(62, 165, 255);
-    border-radius: 10px;
-}
-.carte_img{
-    border-radius: 10px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-h3{
+    transform: translateX(40px);
+    align-items: flex-start;
     text-align: center;
-    padding-top: 80%;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    text-decoration: none;
-    font-family: sans-serif;
-    color: white;
 }
-h3:hover{
+.nav{
+    overflow: hidden; 
+    background-color: rgb(39, 107, 174);
+}
+.nav a{
+ float: left;
+ display: block;
+ color: aliceblue;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+ font-family: sans-serif;
+ font-size: 1.2rem;
+ font-weight: bolder;
+}
+.nav a:hover{
+    background-color:rgb(170, 212, 255) ;
     color: black;
-}
-.section1_partition3{
-    position: relative;
-    width : 100%; 
-    height: 100%;
-    justify-content: center;
-    display: flex; 
-    background-size: cover;
-    background-repeat: no-repeat; 
-    background-color: rgb(120, 188, 255);
 }
 table{
-
     align-content: center;
-}
-caption{
-    font-size: 1.2rem;
-    font-weight: bolder;
-    text-decoration: none;
-    font-family: sans-serif;
-    color: black;
+    width: 100%;
+    padding: 20px;
 }
 td{
     border : 1px solid rgb(0,60,112) ;
@@ -193,15 +94,39 @@ input:hover {
     color: rgb(0,60,112);
     cursor:grab;
 }
-.section1_partition4{
-    position: relative;
-    width : 100%; 
-    height: 100%;
-    justify-content: center;
-    display: flex; 
-    background-size:auto;
-    background-repeat: no-repeat; 
-    background-color: rgb(173, 214, 255);
+.carte-container{
+    height: 80%;
+    width: 100%;
+    display: grid; 
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr ;
+    gap:10px; 
+
+}
+.carte{
+    display:grid; 
+    grid-template-rows: 4fr 1fr ;
+    background-color: rgb(0,60,112);
+    border-radius: 10px;
+}
+.carte_img{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.row::after{
+    content:""; 
+    display:table; 
+    clear:both;
+    
+}
+.leftcolumn{
+    float: left; 
+    width:75%; 
+}
+.rightcolumn {
+    float: left;
+    width: 25%; 
+    padding-left: 20px;
 }
 h2{
     font-size: 1.2rem;
@@ -209,24 +134,63 @@ h2{
     text-decoration: none;
     font-family: sans-serif;
     color: black; 
+    text-align: center;
 }
-#carrousel{
-    position: relative; 
-    height: 200px; 
-    width: 700px; 
-    margin: auto; 
-    
+.header{
+    padding: 200px;
+    text-align: center;
+    background: white; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y:-270px;
+    background-image: url(images/bat.jpg);
 }
-#carrousel ul li{
-    position: absolute; 
-    top:0; 
-    left:0; 
+.header h1 {
+    font-size: 50px;
+  }
+.sideblocks{
+background-color: rgb(219, 242, 255);
+padding: 60px; 
+margin-top: 20px;
+color:black;
+}
+.fakeimg {
+    background-color: rgb(161, 209, 224);
+    width: 100%;
+    padding: 20px;
+  }
+  .footer{
+color: white;
+padding: 20px;
+text-align: center;
+margin-top: 20px;
+background-color: rgb(39, 73, 125);
+}
+h3{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: white;
+}
+a[href^='mailto']::before {
+    content: '📧 ';
 }
 
-
-
-
-
+a[href^='tel']::before {
+    content: '📞 ';
+}
+ul li a{
+    color: white;
+    text-decoration: none;
+}
+@media screen and (max-width:800px){
+    .leftcolumn, .rightcolumn{
+        width:100%; 
+        padding: 0;
+    }
+} 
 
 
 

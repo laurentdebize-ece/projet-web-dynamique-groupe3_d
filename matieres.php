@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Accueil</title>
 
-    <link rel="stylesheet" href="matiere.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
