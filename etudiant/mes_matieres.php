@@ -89,21 +89,28 @@
             
         <h1>Mes matières</h1>
         <?php
-        $response =  $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
+        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
 
         ?>
         <div class="casier">
             <?php
                 while ($donnees = $response->fetch()) {
+                    $nomMat = lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat'])));
             ?>
-                <a href="etudiant.php">
-                    <div class="casier-container" id="<?php echo $donnees['nomMat']?>" name="<?php echo $donnees['nomMat']?>">
+                <a href="detail_matiere.php?nomMat=<?php echo $donnees['nomMat'];?>">
+                    <div class="casier-container" id="<?php echo $nomMat?>" name="<?php echo $nomMat?>">
                         <div class="casier-titre">
-                            <div class="casier-container-img"><img src="images/<?php echo iconv('UTF-8', 'ASCII//TRANSLIT',$donnees['nomMat']); ?>.jpg"></div>
-                            <?php 
-                            $nomMat = ucfirst($donnees['nomMat']);
-                            echo $nomMat;?>
-
+                            <div class="casier-container-img">
+                                <?php 
+                                    $imagePath = "images/matieres/" . lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat']))) . ".jpg";
+                                    if (file_exists($imagePath)) {
+                                        echo '<img src="' . $imagePath . '">';
+                                    } else {
+                                        echo '<img src="images/default.jpg">';
+                                    }
+                                ?>
+                            </div>
+                            <?php echo $donnees['nomMat'];?>
                         </div>
                     </div>
                 </a>
@@ -112,34 +119,6 @@
             ?>
         </div>
     </section>
-    <h2>Mes compétences associées</h2>
-    <?php
-    $response =  $response = $bdd->query('SELECT * FROM competences');
-    
-    ?>
-    <div class="casier">
-        <?php
-            while ($donnees = $response->fetch()) {
-        ?>
-                <div class="casier-container"> 
-                    <div class="casier-titre">
-                        <?php echo $donnees['nomComp']; ?> 
-                    </div>
-                </div>
-        <?php
-            }
-        ?>
-    </div>
-    <div class="casier">
-        <div class="casier-container">
-            <p>Hello</p>
-        </div>
-        <div class="casier-container">
-            <p>Hello</p>
-        </div>
-        <div class="casier-container">
-            <p>Hello</p>
-    </div>
 </body>
 
 </html>
