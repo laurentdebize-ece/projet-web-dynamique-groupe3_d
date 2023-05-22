@@ -122,7 +122,8 @@
     // Afficher le nom et prenom de la personne connectee
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
-    echo "<p>Bonjour $prenom $nom !</p>";
+    echo "<h1>Bienvenue $prenom ".str_replace('_', ' ',$nom)."</h1>";
+
     ?>
         <div class="options" id="option-1" name="matieres">
             <div class="option_title">

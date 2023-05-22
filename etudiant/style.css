@@ -254,11 +254,8 @@ section a{
 
 .competence-casier{
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
@@ -266,111 +263,183 @@ section a{
 }
 
 .competence-casier-container--1{
-    background-color: rgb(112, 112, 112);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(180, 180, 180);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container--1:hover{
-    background-color: rgb(54, 54, 54);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-0 {
     background-color: rgb(255, 63, 63);
-    width: 100%;
-    height: fit-content;
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-0:hover{
-    background-color: rgb(174, 40, 40);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-1 {
     background-color: rgb(255, 151, 32);
-    width: 100%;
-    height: fit-content;
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-1:hover{
-    background-color: rgb(189, 122, 6);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-2 {
-    background-color: rgb(255, 255, 0);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(219, 219, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-2:hover{
-    background-color: rgb(189, 189, 6);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-3 {
-    background-color: rgb(0, 255, 0);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(0, 155, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
+    border-width: 10px;
+    border-color: black;
 }
 
-.competence-casier-container-3:hover{
-    background-color: rgb(0, 189, 0);
-    color: white;
+.competence-casier-container-title{
+    grid-column: 1 / span 4;
+    font-size: 2.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
 }
+
+.competence-casier-container-corps{
+    grid-column: 1 / span 4;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.competence-casier-container-button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    position: ;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 2.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+.competence-casier-container-button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+
+
+.competence-casier-container-button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+
+.competence-casier-container-button a:hover{
+    color: rgb(255, 255, 255);
+}
+

@@ -34,15 +34,7 @@
                 <div class="carte-container">
                     <div class="carte carte1">
 
-    <div class="nav">
-        <div class="nav">
-            <a href="etudiant.php">Home</a>
-            <a href="matieres.php">Mes matières</a>
-            <a href="eval.php">Mes évaluations</a>
-            <a href="eval_a_venir.php">Evaluations à venir</a>
-            <a href="mon_espace.php" style="float:right">Mon espace</a>
-        </div>
-    </div>
+                        <div class="carte_img carte_img1">
 
                         <a href="etudiant.php"><h3>Accueil</h3></a>
 
@@ -77,15 +69,21 @@
 
                 </div>
             </div>
+            <!--<div class="section1_partition3">
+        
+
+                
+            </div>-->
 
         </section>
     </header>
+
 
     <?php
     if(isset($_GET['nomComp']) && isset($_GET['idComp'])){
         $nomCompSelect = $_GET['nomComp'];
         $idCompSelect = $_GET['idComp'];
-        echo "<br>idComp : " . $idCompSelect . "<br>nomComp : " . $nomCompSelect;
+        $idEtudiant = $_SESSION['id'];
     }
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -93,7 +91,48 @@
         die('Erreur : ' . $e->getMessage());
     }
 
-
+    $request = $bdd->query('SELECT * FROM eval JOIN evalcomp ON eval.idEval = evalcomp.IdEval AND evalcomp.IdComp = '.$idCompSelect);
+    if ($request->rowCount() == 0){
+        ?>
+        <div class='competence-casier-container--1'>
+            <div class='competence-casier-container-title'>
+                <h1><?php echo $nomCompSelect; ?></h1>
+            </div>
+            <div class='competence-casier-container-corps'>
+                <p>Vous n'avez pas encore d'évaluation pour cette compétence</p>   
+            </div>
+            <div class='competence-casier-container-button'>S'évaluer</div>
+        </div>
+        <?php
+    }
+    else{
+        $eval = $request->fetch();
+    
+        $request = $bdd->query('SELECT * FROM niveau JOIN competences ON niveau.idNiv = competences.IdNiv AND competences.IdCompetence = '.$idCompSelect);
+        $niveau = $request->fetch();
+        
+        $request = $bdd->query('SELECT * FROM commentaire WHERE IdNiv = '.$niveau['idNiv']);
+        $commentaire = $request->fetch();
+        
+        ?>
+        
+            <div class='competence-casier-container-<?php echo $niveau['niv']; ?>'>
+                <div class='competence-casier-container-title'>
+                    <h1><?php echo $nomCompSelect; ?></h1>
+                </div>
+                <div class='competence-casier-container-corps'>
+                    <p>Evaluation du <?php echo $eval['date']; ?>.</p>
+                    <p>Note : <?php echo $niveau['niv']; ?>/3</p>   
+                    <p>Commentaire : <?php echo $commentaire['texte']; ?></p>
+                </div>
+                <div class='competence-casier-container-button'>
+                    <a href="evaluation.php?nomComp=">S'évaluer</a>
+                </div>
+            </div>
+        <?php
+        
+    }
+    
     ?>
 </body>
 </html>
