@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -19,10 +20,9 @@
                     </div>
                     <nav>
                         <ul>
-                            <li><a href="accueil.html">Accueil</a></li>
-                            <li><a href="competences.html">Mes compétences</a></li>
-                            <li><a href="transverses.html">Compétences transverses</a></li>
-                            <li><a href="eval.html">S'auto-évaluer</a></li>
+                            <li><a href="promo.php">Promotions & Classes</a></li>
+                            <li><a href="prof.php">Professeurs</a></li>
+                            <li><a href="matieres.php">Matières</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -34,7 +34,7 @@
 
                         <div class="carte_img carte_img1">
 
-                            <h3>Mes compétences</h3>
+                        <a href="promo.php"><h3>Promotions & Classes</h3></a>
 
                         </div>
 
@@ -42,32 +42,33 @@
                     <div class="carte carte2">
 
                         <div class="carte_img carte_img2">
-                            <h3>S'auto-évaluer</h3>
-
+                        <a href="prof.php"><h3>Professeurs</h3></a>
                         </div>
-                    
+
                     </div>
                     <div class="carte carte3">
 
                         <div class="carte_img carte_img3">
 
-                            <h3>Compétences Transverses</h3>
+                        <a href="matieres.php"><h3>Matières</h3></a>
 
                         </div>
                     </div>
                     <div class="carte carte4">
 
                         <div class="carte_img carte_img4">
-
-                            <h3>Mon espace</h3>
-
+                        <a href="mon_espace.php"><h3>Mon espace</h3>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
-        
+            <div class="section1_partition3">
+                <h3>Evaluations à venir</h3>    
+            </div>
+
+
         </section>
     </header>
 </body>

@@ -16,6 +16,7 @@ body {
 h1 {
     font-weight: bold;
     margin: 0;
+    text-align: center;
 }
 
 h2 {
@@ -43,8 +44,8 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid rgb(62, 165, 255);
+    background-color: rgb(62, 165, 255);
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -103,12 +104,16 @@ input {
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in-container {
-    left: 0;
+.sign-in-container { 
+    margin-top: 15%; 
     width: 50%;
     z-index: 2;
 }
 
+#choix{
+   text-align: center;
+    position: relative;
+}
 .container.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
@@ -163,9 +168,9 @@ input {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background: rgb(39, 107, 174);
+    background: -webkit-linear-gradient(to right, rgb(62, 165, 255), rgb(39, 107, 174));
+    background: linear-gradient(to right, rgb(62, 165, 255), rgb(39, 107, 174));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
