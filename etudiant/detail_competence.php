@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails d'une compétences</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+    </script>
 </head>
 
 <body>
@@ -32,7 +34,15 @@
                 <div class="carte-container">
                     <div class="carte carte1">
 
-                        <div class="carte_img carte_img1">
+    <div class="nav">
+        <div class="nav">
+            <a href="etudiant.php">Home</a>
+            <a href="matieres.php">Mes matières</a>
+            <a href="eval.php">Mes évaluations</a>
+            <a href="eval_a_venir.php">Evaluations à venir</a>
+            <a href="mon_espace.php" style="float:right">Mon espace</a>
+        </div>
+    </div>
 
                         <a href="etudiant.php"><h3>Accueil</h3></a>
 

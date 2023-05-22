@@ -59,6 +59,7 @@
                                 $_SESSION ['prenom'] = $donnees['prenomProf']; 
                                 $_SESSION ['mail'] = $donnees['mailProf']; 
                                 $_SESSION ['mdp'] = $donnees['mdp']; 
+                                $_SESSION['id'] = $donnees['IdProf']; 
                                 $trouve=1;
 
                             }

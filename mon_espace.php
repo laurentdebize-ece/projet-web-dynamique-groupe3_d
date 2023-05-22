@@ -33,7 +33,7 @@
         Mon identifiant : <?php echo $_SESSION['mail'] ?> <br>
         Mon mot de passe: <?php echo $_SESSION['mdp'] ?> <br>
         <button type="submit" value="m'auto-évaluer" name=evaluation>
-            <a href="etudiant.php"><button type="submit" value="retour"></a>
+        <a href="etudiant.php"> <button type="submit" value="retour"></a>
     </form>
     </p>
 

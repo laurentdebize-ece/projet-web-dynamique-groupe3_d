@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -25,29 +26,36 @@
     ?>
     <h1>Mes matières</h1>
     <?php
-    $response =  $response = $bdd->query('SELECT * FROM matieres');
-
-    while ($donnees = $response->fetch()) {
+    $matiere = $bdd->query('SELECT * FROM etumat AS em, matieres AS m, matcomp AS mc, competences AS c WHERE em.IdEtu= "'.$_SESSION['id'].'" 
+    AND em.IdMat= m.idMat AND mc.IdMat=m.idMat AND c.idCompetence=mc.IdCompetence ORDER BY m.nomMat');
+    $mat = 0;
+    while ($donnees = $matiere->fetch()) {
     ?>
-        <ol>
-            <li> <?php echo $donnees['nomMat']; ?> </li>
-        </ol>
+        <ul>
+            <?php
+            while (($donnees['nomMat']) != $mat) {
+            ?> <li>
+                    <?php
+                    $mat = $donnees['nomMat'];
+                    echo $donnees['nomMat'];
+                    ?>
+                    <h4>Mes compétences associées</h4>
+                </li>
+            <?php
+            }
+            ?>
+
+            <ul>
+                <li> <?php echo $donnees['nomCompetence']; ?> </li>
+
+            </ul>
+
+        </ul>
     <?php
     }
+    ?>
 
-    ?>
-    <h2>Mes compétences associées</h2>
-    <?php
-    $response =  $response = $bdd->query('SELECT * FROM competences');
 
-    while ($donnees = $response->fetch()) {
-    ?>
-        <ol>
-            <li> <?php echo $donnees['nomCompetence']; ?> </li>
-        </ol>
-    <?php
-    }
-    ?>
 </body>
 
 </html>
