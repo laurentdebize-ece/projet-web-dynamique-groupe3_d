@@ -188,6 +188,7 @@ section a{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     gap: 10px;
+    transition: all .3s ease;
 }
 
 .casier-container-img {
@@ -234,6 +235,7 @@ section a{
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
+    transition: all .3s ease;
 }
 
 .casier-titre:hover{
@@ -243,6 +245,7 @@ section a{
 .casier-titre a{
     text-decoration: none;
     color: white;
+    transition: all .3s ease;
 }
 
 .casier-titre a:hover{

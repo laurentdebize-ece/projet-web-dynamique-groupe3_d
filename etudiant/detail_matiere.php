@@ -86,7 +86,6 @@
         die('Erreur : ' . $e->getMessage());
     }
     $tabMatiere = $bdd->query('SELECT * FROM matieres');
-    //$tabCompetence = $bdd->query('SELECT * FROM competences ORDER BY nomCompetence ASC');
     while ($matiere = $tabMatiere->fetch()){
         if ($matiere['nomMat'] == $nomMat){
             
@@ -98,7 +97,7 @@
                         <?php
                             while ($competence = $tabCompetence->fetch()){
                         ?>
-                                <a href="detail_competence.php?nomCompetence=<?php echo $competence['nomCompetence']; ?>">
+                                <a href="detail_competence.php?nomComp=<?php echo $competence['nomCompetence']; ?>&idComp=<?php echo $competence['idCompetence']; ?>">
                                     <div class="casier-container" id="<?php echo $competence['nomCompetence']; ?>" name="<?php echo $competence['nomCompetence']; ?>">
                                         <div class="casier-titre">
                                             <div class="casier-container-img">
