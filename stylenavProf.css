@@ -1,43 +1,203 @@
 [id|="c"]{
-    display: none;
-  }
-  [class|="c"]{
-    display: none;
-  }
-  [class|="clist"]{
-    display: none;
-  }
-  #menuDeroulePromo{
-    height: 600px;
-    overflow: auto;
-  }
-  [id|="m"]{
-    display: none;
-  }
-  [class|="e"]{
-    display: none;
-  }
-  [class|="etu"]{
-    display: none;
-  }
-  #ClassNav{
-    display: none;
-  }
-  [class|="mlist"]{
-    display: none;
-  }
-  #MatiereNav{
-    display: none;
-  }
-  [id|="mNom"]{
-    display: none;
-  }
-  [class|="comp"]{
-    display: none;
-  }
-  #comp{
-    display: none;
-  }
-  #comp2{
-    display: none;
-  }
+  display: none;
+}
+.promo:hover{
+  text-decoration: underline;
+  text-decoration-color: #fff;
+}
+[class|="c"]{
+  display: none;
+}
+[class|="clist"]{
+  display: none;
+  color:#fff;
+  background-color: rgb(170, 212, 255) ;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  height: 50px;
+  width: 300px;
+  min-height: 80%;
+  max-width: 100%;
+  min-width: 50%;
+  padding-top: 15px;
+}
+[class|="clist"]:hover{
+  text-decoration: underline;
+  text-decoration-color: #fff;
+}
+#menuDeroulePromo{
+  height: 600px;
+  overflow: auto;
+  background: rgb(67,165,255);
+  background: linear-gradient(90deg, rgba(67,165,255,1) 0%, rgba(39,107,174,1) 100%); 
+  color:white;
+}
+[id|="m"]{
+  display: none;
+}
+[class|="e"]{
+  display: none;
+}
+[class|="etu"]{
+  display: none;
+}
+[class|="etu"]:hover{
+  text-decoration: underline;
+  text-decoration-color: #fff;
+}
+#ClasseNav{
+  display: none;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 1200px;
+  max-width: 100%;
+  height: 600px;
+  min-height: 80%;
+  text-align: center;
+  letter-spacing: 1px;
+}
+[class|="mlist"]{
+  display: none;
+}
+#MatiereNav{
+  display: none;
+}
+[id|="mNom"]{
+  display: none;
+}
+[class|="comp"]{
+  display: none;
+}
+#comp{
+  display: none;
+}
+#comp2{
+  display: none;
+  padding-top: 40px;
+  height: 100px;
+}
+#comp3{
+  display: none;
+  padding-top: 40px;
+  height: 100px;
+}
+button{
+  height: 30px;
+  background-color: white;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  width: 150px;  
+  position: relative;
+  margin-left: 15px;
+}
+button:hover{
+  background-color:rgb(39, 107, 174);
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+}
+#PromoNav{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 1200px;
+  max-width: 100%;
+  height: 600px;
+  min-height: 80%;
+  text-align: center;
+  letter-spacing: 1px;
+}
+h1{
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(48,129,205);
+  color-interpolation-filters: linear-gradient(90deg, rgba(48,129,205,1) 0%, rgba(39,107,174,1) 100%); 
+}
+#etuMat{
+  height: 600px;
+  overflow: auto;
+  background: rgb(67,165,255);
+  background: linear-gradient(90deg, rgba(67,165,255,1) 0%, rgba(39,107,174,1) 100%); 
+  color:white;
+}
+#tableauComp{
+  height: 400px;
+  overflow: scroll;
+}#ModifComp{
+  height: 200px;
+  padding-top: 50px;
+  overflow: auto;
+}
+
+
+#formulaire{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 1000px;
+  max-width: 100%;
+  height: 600px;
+  min-height: 80%;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#form{
+  padding: 40px;
+}
+.labelEval{
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 1px;
+  height:40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(48,129,205);
+  color-interpolation-filters: linear-gradient(90deg, rgba(48,129,205,1) 0%, rgba(39,107,174,1) 100%); 
+}
+.dataform{
+  height:100px;
+}
+#BouttonAddComp{
+  width:30px;
+}
+#Envoyer{
+  height: 30px;
+  background-color: white;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  width: 150px;  
+  position: relative;
+  margin-left: 15px;
+}
+#Envoyer:hover{
+  background-color:rgb(39, 107, 174);
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+}
+#divEnvoyer{
+  padding:40px
+}
+#Retour{
+  margin-top: 30px;
+  margin-left: 155px;
+}
+

@@ -82,14 +82,14 @@
                         while ($donnees2 = $response2->fetch()) {
                             if ($donnees["anneeDePromo"] == $donnees2["anneeDePromo"]) {
                                 echo "<div class='col-sm-4'><p class=clist-" . $donnees["anneeDePromo"] . " id=clist-" . $donnees["anneeDePromo"] . "-" . $donnees2["classeNum"] . ">classe " . $donnees2["classeNum"] . "</p></div>";
-                                $nbcase = ($nbcase + 1) % 4;
+                                $nbcase = ($nbcase + 1) % 2;
                                 if ($nbcase == 0) {
                                     echo "</div><div class='row'>";
                                 }
                             }
                         }
-                        if ($nbcase != 4) {
-                            for ($i = 0; $i < 4 - $nbcase; $i++) {
+                        if ($nbcase != 2) {
+                            for ($i = 0; $i < 2 - $nbcase; $i++) {
                                 echo "<div class='col-sm-4'></div>";
                             }
                         }
@@ -101,9 +101,9 @@
         </div>
 
         <!-- Navigation des classe et séléction des élèves-->
-        <h2 class=titreNavClasse><span id='titreNavClasse'></span></h2>
         <div class="row" id=ClasseNav>
             <div class="col-sm-4" id=etuMat>
+                <h2 class=titreNavClasse><span id='titreNavClasse'></span></h2><br>
                 <?php
                 $MAXE = $bdd->query('SELECT MAX(IdEtudiant) AS "Max" FROM etudiant');
                 $MaxE = $MAXE->fetch();
@@ -120,73 +120,77 @@
                 ?>
             </div>
             <div class="col-sm-8" id=matiereListe>
-                <div class='container'>
+                <div class='table-hover' id=tableauComp>
                     <div class='row' id=comp>
-                        <div class='col-sm-3'>Nom de la Compétence</div>
-                        <div class='col-sm-3'>Matière</div>
-                        <div class='col-sm-3'>évalué le :</div>
-                        <div class='col-sm-3'>Niveau :</div>
+                        <div class='col-sm-2'>Nom de la Compétence</div>
+                        <div class='col-sm-2'>Matière</div>
+                        <div class='col-sm-2'>évalué le :</div>
+                        <div class='col-sm-2'>Niveau :</div>
                     </div>
-                </div>
-                <?php
-                $encore3 = 0;
-                $MAXCOMP = $bdd->query('SELECT MAX(idCompetence) AS "Max" FROM competences');
-                $MaxComp = $MAXCOMP->fetch();
-                $MINCOMP = $bdd->query('SELECT MIN(idCompetence) AS "Min" FROM competences');
-                $MinComp = $MINCOMP->fetch();
-                $MATIERES =  $bdd->query("SELECT * FROM professeurs AS pr, enseignerclassmatprof AS cmp WHERE pr.IdProf = '$ID' AND pr.IdProf =cmp.IdProf");
-                while ($Matieres = $MATIERES->fetch()) {
-                    if ($encore3 != $Matieres['IdMat']) {
-                        $response = $bdd->query('SELECT * FROM etudiant AS e, eval AS ev, evalcomp AS ec, competences AS c, niveau AS n WHERE e.IdEtudiant=ev.IdEtu AND ev.IdEval=ec.IdEval AND ec.IdComp=c.idCompetence  AND n.idNiv=c.IdNiv ORDER BY nomEtu');
-                        while ($donnees = $response->fetch()) {
-                            $response2 = $bdd->query('SELECT * FROM etumat AS em, etudiant AS e, matieres AS m, competences AS c, matcomp AS mc WHERE e.IdEtudiant=em.IdEtu AND em.IdMat=m.idMat AND m.idMat=mc.IdMat AND mc.IdCompetence=c.idCompetence ORDER BY nomCompetence');
-                            while ($donnees2 = $response2->fetch()) {
-                                if ($donnees["idCompetence"] == $donnees2["idCompetence"] && $donnees2["IdEtudiant"] == $donnees["IdEtudiant"] && $donnees2["idMat"] == $Matieres['IdMat']) {
-                                    echo "<div class='container'><div class='row' id='comp-" . $donnees2["idCompetence"] . "'>";
-                                    echo "<div class='col-sm-3'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["nomCompetence"] . "</div></p>";
-                                    echo "<div class='col-sm-3'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees2["nomMat"] . "</div></p>";
-                                    echo "<div class='col-sm-3'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["date"] . "</div></p>";
-                                    echo "<div class='col-sm-3'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["niv"] . "</div></p>";
-                                    echo "</div></div>";
+                    <?php
+                    $encore3 = 0;
+                    $MAXCOMP = $bdd->query('SELECT MAX(idCompetence) AS "Max" FROM competences');
+                    $MaxComp = $MAXCOMP->fetch();
+                    $MINCOMP = $bdd->query('SELECT MIN(idCompetence) AS "Min" FROM competences');
+                    $MinComp = $MINCOMP->fetch();
+                    $MATIERES =  $bdd->query("SELECT * FROM professeurs AS pr, enseignerclassmatprof AS cmp WHERE pr.IdProf = '$ID' AND pr.IdProf =cmp.IdProf");
+                    while ($Matieres = $MATIERES->fetch()) {
+                        if ($encore3 != $Matieres['IdMat']) {
+                            $response = $bdd->query('SELECT * FROM etudiant AS e, eval AS ev, evalcomp AS ec, competences AS c, niveau AS n WHERE e.IdEtudiant=ev.IdEtu AND ev.IdEval=ec.IdEval AND ec.IdComp=c.idCompetence  AND n.idNiv=c.IdNiv ORDER BY nomEtu');
+                            while ($donnees = $response->fetch()) {
+                                $response2 = $bdd->query('SELECT * FROM etumat AS em, etudiant AS e, matieres AS m, competences AS c, matcomp AS mc WHERE e.IdEtudiant=em.IdEtu AND em.IdMat=m.idMat AND m.idMat=mc.IdMat AND mc.IdCompetence=c.idCompetence ORDER BY nomCompetence');
+                                while ($donnees2 = $response2->fetch()) {
+                                    if ($donnees["idCompetence"] == $donnees2["idCompetence"] && $donnees2["IdEtudiant"] == $donnees["IdEtudiant"] && $donnees2["idMat"] == $Matieres['IdMat']) {
+                                        echo "<div class='row' id='comp-" . $donnees2["idCompetence"] . "'>";
+                                        echo "<div class='col-sm-2'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["nomCompetence"] . "</div></p>";
+                                        echo "<div class='col-sm-2'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees2["nomMat"] . "</div></p>";
+                                        echo "<div class='col-sm-2'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["date"] . "</div></p>";
+                                        echo "<div class='col-sm-2'><p id='comp-" . $donnees2["idCompetence"] . "' class=comp-" . $donnees2["IdEtudiant"] . "-" . $donnees["trans"] . ">" . $donnees["niv"] . "</div></p>";
+                                        echo "</div>";
+                                    }
                                 }
                             }
+                            $encore3 = $Matieres['IdMat'];
                         }
-                        $encore3 = $Matieres['IdMat'];
                     }
-                }
-                ?>
+                    ?>
+                </div>
+                <form>
+                    <div class='container'>
+                        <form id=ModifComp>
+                            <div class='row' id=comp2>
+                                <div class='col-sm-4'>
+                                    <label for="progression">Nom de la Compétence :</label>
+                                    <input type='text' id="NomComp" name='NomComp'>
+                                </div>
+                                <div class='col-sm-4'>
+                                    <label for="progression">Progression :</label><br>
+                                    <select name="progression" id="progression">
+                                        <option value="1">Acquis</option>
+                                        <option value="2">En Cours d'acquisition</option>
+                                        <option value="3">Non Acquis</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='row' id=comp3>
+                                <div class='col-sm-4'>
+                                    <button onClick=CompModif()>Modifier</button>
+                                </div>
+                                <div class='col-sm-4'>
+                                    <button onClick=Supprimer()>Supprimer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <form>
-        <div class='container'>
-            <form>
-            <div class='row' id=comp2>
-                <div class='col-sm-4'>
-                    <label for="progression">Nom de la Compétence :</label>
-                    <input type='text' id="NomComp" name='NomComp'>
-                </div>
-                <div class='col-sm-4'>
-                    <label for="progression">Progression :</label><br>
-                    <select name="progression" id="progression">
-                        <option value="1">Acquis</option>
-                        <option value="2">En Cours d'acquisition</option>
-                        <option value="3">Non Acquis</option>
-                    </select>
-
-                </div>
-                <div class='col-sm-4'>
-                    <button onClick=CompModif()>Modifier</button>
-                    <button onClick=Supprimer()>Supprimer</button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </form>
+    <br>
 
     <!-- bouton de retour -->
-    <p id=RETOUR>RETOUR</p>
+    <button id=RETOUR onclick=retour()>RETOUR</button>
 
 
 
@@ -202,28 +206,29 @@
         var etudiant = 0;
         var progress;
 
-        $(document).ready(function() {
-            $('#RETOUR').click(function() {
-                switch (navigation) {
-                    case 0:
-                        location.href='prof.php';
-                        break;
-                    case 1:
-                        $('#PromoNav').show();
-                        $('#titreNavClasse').hide();
-                        $('.etu-' + promo + '-' + classe).hide();
-                        $('.m-' + etudiant).hide('slow');
-                        $('.mlist-' + etudiant).hide();
-                        $('#MatiereNav').hide();
-                        $('#mNom-' + matiere).hide();
-                        $('.comp-' + etudiant + '-0').hide();
-                        $('#comp').hide();
-                        $('#comp2').hide();
-                        navigation = 0;
-                        break;
-                }
-            });
-        });
+        function retour() {
+            switch (navigation) {
+                case 0:
+                    location.href = 'prof.php';
+                    break;
+                case 1:
+                    $('#PromoNav').show();
+                    $('#titreNavClasse').hide();
+                    $('#ClasseNav').hide();
+                    $('#comp').hide();
+                    $('#comp2').hide();
+                    $('#comp3').hide();
+                    $('#MatiereNav').hide();
+                    $('.etu-' + promo + '-' + classe).hide();
+                    $('.m-' + etudiant).hide('slow');
+                    $('.mlist-' + etudiant).hide();
+                    //$('#mNom-' + matiere).hide();
+                    $('.comp-' + etudiant + '-0').hide();
+
+                    navigation = 0;
+                    break;
+            }
+        }
 
         $(document).ready(function() {
             $('#CompClick').click(function() {
@@ -258,6 +263,7 @@
             echo "document.getElementById('titreNavClasse').innerHTML = 'Classe " . $l . " - Promo " . $k . "';";
             echo "$('#PromoNav').hide();";
             echo "$('#titreNavClasse').show();";
+            echo "$('#ClasseNav').show();";
             echo "promo=" . $k . ";";
             echo "classe=" . $l . ";";
             echo "$('.etu-" . $k . "-" . $l . "').show();";
@@ -275,6 +281,7 @@
         echo "$('.comp-'+etudiant+'-0').toggle();";
         echo "$('#comp').show();";
         echo "$('#comp2').show();";
+        echo "$('#comp3').show();";
         echo "});});";
         echo "</script>";
     }
@@ -302,7 +309,7 @@
             $donneesTransi = $response4->fetch();
             $NewIdEval = $donneesTransi;
             $req = $bdd->prepare("UPDATE evalcomp AS ec SET IdComp = :Newprogress WHERE ec.idEval = :NewIdEval");
-            $req->execute(array('Newprogress' => $Newprogress,'NewIdEval' => $NewIdEval));
+            $req->execute(array('Newprogress' => $Newprogress, 'NewIdEval' => $NewIdEval));
             ?>
             if (NewNomComp != '') {
                 <?php
@@ -314,7 +321,7 @@
                 while ($donnees2 = $reponse->fetch()) {
                     $IDcomp = $donnees2['idCompetence'];
                     $req2 = $bdd->prepare("UPDATE competences AS c SET nomCompetence = :NewNomComp WHERE c.idCompetence = :IDcomp");
-                    $req2->execute(array('NewNomComp' => $NewNomComp,'IDcomp' => $IDcomp));
+                    $req2->execute(array('NewNomComp' => $NewNomComp, 'IDcomp' => $IDcomp));
                 }
                 ?>
             }
