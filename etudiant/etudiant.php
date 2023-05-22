@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Accueil_etudiant</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
     </script>
 </head>
@@ -35,10 +35,10 @@
 
     <div class="nav">
         <a href="etudiant.php">Home</a>
-        <a href="matieres.php">Mes matières</a>
-        <a href="eval.php">Mes évaluations</a>
-        <a href="eval_a_venir.php">Evaluations à venir</a>
-        <a href="mon_espace.php" style="float:right">Mon espace</a>
+        <a href="mes_matieres.php">Mes matières</a>
+        <a href="../eval.php">Mes évaluations</a>
+        <a href="../eval_a_venir.php">Evaluations à venir</a>
+        <a href="../mon_espace.php" style="float:right">Mon espace</a>
     </div>
 
 
@@ -50,7 +50,7 @@
                     <div class="carte-container">
                         <div class="carte carte1">
                             <div class="carte_img carte_img1">
-                                <a href="matieres.php">
+                                <a href="mes_matieres.php">
                                     <h3>Mes matières</h3>
                                 </a>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="carte carte2">
 
                             <div class="carte_img carte_img2">
-                                <a href="eval.php">
+                                <a href="../eval.php">
                                     <h3>Mes évaluations</h3>
                                 </a>
                             </div>
@@ -68,7 +68,7 @@
 
                             <div class="carte_img carte_img3">
 
-                                <a href="eval_a_venir.php">
+                                <a href="../eval_a_venir.php">
                                     <h3>Évaluations à venir</h3>
                                 </a>
 
@@ -77,7 +77,7 @@
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="mon_espace.php">
+                                <a href="../mon_espace.php">
                                     <h3>Mon espace</h3>
                             </div>
 
