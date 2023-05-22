@@ -161,6 +161,7 @@
 
     <form>
         <div class='container'>
+            <form>
             <div class='row' id=comp2>
                 <div class='col-sm-4'>
                     <label for="progression">Nom de la Compétence :</label>
@@ -176,10 +177,11 @@
 
                 </div>
                 <div class='col-sm-4'>
-                    <button onClick="CompModif()">Modifier</button>
-                    <button onClick="Supprimer()">Supprimer</button>
+                    <button onClick=CompModif()>Modifier</button>
+                    <button onClick=Supprimer()>Supprimer</button>
                 </div>
             </div>
+            </form>
         </div>
     </form>
 
@@ -204,6 +206,7 @@
             $('#RETOUR').click(function() {
                 switch (navigation) {
                     case 0:
+                        location.href='prof.php';
                         break;
                     case 1:
                         $('#PromoNav').show();

@@ -59,7 +59,7 @@
                         <div class="carte carte2">
 
                             <div class="carte_img carte_img2">
-                                <a href=".php">
+                                <a href="navigationPromoProf.php">
                                     <h3>Mes classes</h3>
                                 </a>
                             </div>
@@ -69,7 +69,7 @@
 
                             <div class="carte_img carte_img3">
 
-                                <a href=".php">
+                                <a href="addEvalProfForm.php">
                                     <h3>Programmer une évaluation</h3>
                                 </a>
                         <a href="navigationPromoProf.php"><h3>Modifier une compétences</h3></a>
