@@ -44,7 +44,7 @@
     <h1>Vous pouvez à présent vous évaluer !</h1>
     <a href="etudiant.php"><button type="submit" id="retour" value=retour>Retour</button></a>
     </div>
-    <form method='post' action='traitement_evaluation.php?idComp=<?php echo $idComp; echo (isset($_GET['idEval']))? "&idEval=".$_GET['idEval'] : ;?>'>
+    <form method='post' action='traitement_evaluation.php?idComp=<?php echo $idComp; echo (isset($_GET['idEval']))? "&idEval=".$_GET['idEval'] : ''?>'>
         <select>
             <option name='option' value="1">Acquis</option>
             <option name='option' value="2">En cours d'acqisition</option>

@@ -46,15 +46,10 @@
 
     $comp = $bdd->query('SELECT * FROM competence WHERE IdCompetence = '.$idComp);
     
-    $matieres = $bdd->query('SELECT * FROM matieres
+    $matieres = $bdd->query('SELECT * FROM matieres 
     JOIN matcomp ON matieres.idMat = matcomp.IdMat
     JOIN competence ON matcomp.IdCompetence = competence.IdCompetence
     WHERE competence.IdCompetence = '.$idComp);
-
-    while($mat = $matieres->fetch()){
-        
-    }
-
 
     $date = date("Y-m-d");
     $bdd->query('INSERT INTO eval (date, IdEtu, IdProf) VALUES (NOW(), ' . $idEtu . ')');
