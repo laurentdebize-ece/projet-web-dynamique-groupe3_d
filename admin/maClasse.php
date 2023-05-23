@@ -16,6 +16,8 @@ $json_idclasse = json_encode($idclasse);
 
 
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";
@@ -35,8 +37,8 @@ $json_idclasse = json_encode($idclasse);
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
-
+    }</script>
+    <script>
     $(document).ready(function() {
         $("#supprimerEleve").click(function() {
             var id_classe = $('input[name="selecRad"]:checked').val();
@@ -67,7 +69,7 @@ $json_idclasse = json_encode($idclasse);
                     id_prenomEtu: id_prenomEtu,
                     id_mailEtu: id_mailEtu,
                     id_mdpEtu: id_mdpEtu,
-                    id_classe: id_classe,
+                    id_classe: id_classe
                 },
                 success: function(data) {
 

@@ -109,20 +109,34 @@
         <div class="FormPopUp" id="popupForm">
             <form action="correctionSQL.php" method="post" class="formCorrect">
                 <h2>Correction</h2>
-                <label for="progression">Progression</label>
+                <div class=margeT>
+                <label for="progression">Progression ;
+                    :
+                </label>
+                </div>
+                <div class=margeT>
                 <select name="progression" id="progression">
                     <option value="1">Acquis</option>
                     <option value="2">En Cours d'acquisition</option>
                     <option value="3">Non Acquis</option>
                     <option value="4">Non Evalué</option>
                 </select>
+                </div>
+                <div class=margeT>
                 <input type="text" id="IdEtu" name="IdEtu" class=hidden style="display:none" />
                 <input type="text" id="IdComp" name="IdComp" class=hidden style="display:none"/>
                 <input type="text" id="IdEval" name="IdEval" class=hidden style="display:none"/>
-                <label for="Commentaire">Commentaire</label>
+                <label for="Commentaire">Commentaire :</label>
+                </div>
+                <div class=margeT>
                 <input type="text" id="Commentaire" name="Commentaire" required />
+                </div>
+                <div class=margeT>
                 <input type="submit" class="Confirmer" value=Confirmer>
+                </div>
+                <div class=margeT>
                 <button type="button" class="Fermer" onclick="Fermer()">Fermer</button>
+                </div>
             </form>
         </div>
     </div>
