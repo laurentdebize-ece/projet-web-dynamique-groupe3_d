@@ -155,34 +155,29 @@
                     }
                     ?>
                 </div>
-                <form>
-                    <div class='container'>
-                        <form id=ModifComp action="ModifProf.php" method="post">
-                            <div class='row' id=comp2>
-                                <div class='col-sm-4'>
-                                    <label for="NompComp">Nom de la Compétence :</label>
-                                    <input type='text' id="NomComp" name='NomComp'>
-                                </div>
-                                <div class='col-sm-4'>
-                                    <label for="progression">Progression :</label><br>
-                                    <select name="progression" id="progression">
-                                        <option value="1">Acquis</option>
-                                        <option value="2">En Cours d'acquisition</option>
-                                        <option value="3">Non Acquis</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class='row' id=comp3>
-                                <div class='col-sm-4'>
-                                <input type='submit' id="Envoyer" value=Modifier>
-                                </div>
-                                <div class='col-sm-4'>
-                                    <button onClick=Supprimer()>Supprimer</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </form>
+                <div class='container' id=form2>
+                    <form id=ModifComp action="ModifProf.php" method="post">
+                        <div id=hidden>
+                            <label for="Etudiant">Etudiant :</label>
+                            <input type='text' id="Etudiant" name='Etudiant'>
+                        </div>
+                        <div>
+                            <label for="NompComp">Nom de la Compétence :</label>
+                            <input type='text' id="NomComp" name='NomComp'>
+                        </div>
+                        <div class=distancetop>
+                            <label for="progression">Progression :</label>
+                            <select name="progression" id="progression">
+                                <option value="1">Acquis</option>
+                                <option value="2">En Cours d'acquisition</option>
+                                <option value="3">Non Acquis</option>
+                            </select><br>
+                        </div>
+                        <div class=distancetop>
+                            <input type='submit' id="Envoyer" value=Modifier>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -202,7 +197,7 @@
         var navigation = 0;
         var classe;
         var promo;
-        var comp =0;
+        var comp = 0;
         var etudiant = 0;
         var progress;
 
@@ -278,6 +273,7 @@
         echo "if( etudiant != " . $p . "){"; //jsp pk ca ne fonctionne plus
         echo '$(".comp-"+etudiant+"-0").hide();}';
         echo "etudiant = " . $p . ";";
+        echo "document.getElementById('Etudiant').value=" . $p . ";";
         echo "$('.comp-'+etudiant+'-0').toggle();";
         echo "$('#comp').show();";
         echo "$('#comp2').show();";
@@ -297,12 +293,18 @@
 
     ?>
 
-    <script>
-        function Modif(){
-            location.href = 'ModifProf.php';
-        }
-    </script>
+<?php 
+    if ($_SESSION['popUp']>0){
+        echo "<script>alert('La compétence a bien été ajoutée');</script>";
+        $_SESSION['popUp']=0;
+    }
+    if ($_SESSION['popUp']<0){
+        echo "<script>alert('Problème : une information n`existe pas dans la base de données');</script>";
+        $_SESSION['popUp']=0;
+    }
     
+    ?>
+
 </body>
 
 </html>
