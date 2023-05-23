@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#retour').click(function () {
+            window.location.href = "mes_matieres.php";
+        });
+    });
+</script>
+
+
 <body>
     
     <?php
@@ -85,6 +95,7 @@
                             }
                             
                         ?>
+                        <button id='retour'>Retour</button>
                     
                 </div>
             </div>
