@@ -48,7 +48,7 @@
                 <input type='date' id="date" name='date'><br>
             </div>
             <div class=dataform id=AddComp>
-                <label for="Comp" class=labelEval>Nom de la Compétence :</label><br>
+                <label for="NomComp" class=labelEval>Nom de la Compétence :</label><br>
                 <input type='text' id="NomComp" name='NomComp'>
                 <button id=BouttonAddComp>+</button>
             </div>
