@@ -31,7 +31,7 @@
     if ($bdd) {
 
 
-        $reponse = $bdd->query('SELECT * FROM promotion');
+        $reponse = $bdd->query('SELECT * FROM promotion ORDER BY promotion.anneeDePromo ASC');
         while ($donnees = $reponse->fetch()) {
 
     ?>
@@ -39,8 +39,8 @@
             <button class="prof" type="button" onclick="openPromo()">
                 <!--ouvre la page qui accede aux classes de la promo-->
                 
-                <a href="detailPromoAdmin.php?anneeDePromo=<?php echo $donnees['anneeDePromo'];?>">
-                <?php echo $donnees['anneeDePromo']; ?>
+                <a href="detailPromoAdmin.php?id=<?php echo $donnees['ID'];?>">
+                <?php echo $donnees['anneeDePromo']; ?></a>
 
             </button>
             <br>
