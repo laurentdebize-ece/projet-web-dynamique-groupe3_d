@@ -140,6 +140,18 @@ h1{
   padding-top: 50px;
   overflow: auto;
 }
+#hidden{
+ display:none;
+}
+#form2{
+  height: 100px;
+  width: 750px;
+  text-align: left;
+  margin-right: 200px;
+}
+.distancetop{
+  margin-top: 20px;
+}
 
 
 #formulaire{

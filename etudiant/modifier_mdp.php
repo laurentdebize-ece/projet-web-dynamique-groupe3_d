@@ -41,7 +41,7 @@
             'id_etudiant' => $id_etudiant
         ));
         $_SESSION['mdp'] = $new_pwd;
-        header('Location: mon_espace.php');
+        //header('Location: mon_espace.php');
     ?>
 </body>
 </html>

@@ -13,7 +13,10 @@
 </head>
 
 <body>
-    <h1>Admin Promo</h1>
+<div class="header">
+        <button id="retour"><a href="../admin.php">Retour</a></button>
+        <h1>Les promotions & classes</h1>
+    </div>
     <h2>Voici les promotions de l'établissement : </h2>
 
     <?php

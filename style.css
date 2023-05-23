@@ -1,13 +1,12 @@
 * {  /* enelver toutes les marges intérieurs et ext des éléments */
     box-sizing: border-box;
-
 }
 body {
-    padding: 10px;
-    font-size: 100%;
     background-color:rgb(168, 212, 255); 
 }
 .img{
+    margin-top: -190px;
+    margin-left: -200px;
     float: left;
     position: relative; 
     background-color: transparent;
@@ -22,20 +21,31 @@ body {
     background-image: url(images/logo.png);
 }
 .welcom_mess{
-    position: relative;
+    font-size: 8rem;
+    transform: translate(3%, -50%);
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
-    font-size: 10rem;
+    text-align: center; 
+    font-family:sans-serif;
+    font-weight: bolder;
     color: transparent;
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 3px white;
     cursor: pointer; 
     transition: all .3s ease; 
 }
 .welcom_mess:hover{
-    color: white; 
+    color:rgb(255, 253, 241); 
     -webkit-text-stroke: 0;
 
+}
+.Hello {
+    text-shadow: 2px 2px white;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color :rgb(0, 60, 112)
 }
 nav{ /* les liens */
     display: flex; 
@@ -113,6 +123,7 @@ input:hover {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .row::after{
     content:""; 
     display:table; 
@@ -120,6 +131,7 @@ input:hover {
     
 }
 .leftcolumn{
+    
     float: left; 
     width:75%; 
 }
@@ -148,7 +160,19 @@ h2{
 .header h1 {
     font-size: 50px;
   }
+.head {
+text-align: center;
+background-color: rgb(39, 73, 125) ;
+padding: 5px;
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+.head h1{
+    font-family: sans-serif;
+    color: white;
+    font-size: 3rem;
+}
 .sideblocks{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 background-color: rgb(219, 242, 255);
 padding: 60px; 
 margin-top: 20px;
@@ -160,6 +184,7 @@ color:black;
     padding: 20px;
   }
   .footer{
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 color: white;
 padding: 20px;
 text-align: center;
@@ -185,14 +210,199 @@ ul li a{
     color: white;
     text-decoration: none;
 }
+.casier-compte{
+    margin-top:70px; 
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(39, 107, 174);
+    color: rgb(0, 0, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.casier-compte h1{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte-button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+.casier-compte-place-buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: all .3s ease;
+}
+
+.casier-compte-button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button p{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button p:hover{
+    color: rgb(255, 255, 255);
+}
+button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+button a:hover{
+    color: rgb(255, 255, 255);
+}
+.head button{
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: rgb(227, 245, 255);
+    color: rgb(0, 60, 112);
+    font-weight: bold;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+    outline: none;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    float:right; 
+    margin-top: -80px;
+
+}
+.head button:hover{
+    transform: scale(0.95);
+    background-color: white;
+    color: rgb(0,60,112);
+    cursor:grab;
+}
 @media screen and (max-width:800px){
     .leftcolumn, .rightcolumn{
         width:100%; 
         padding: 0;
     }
 } 
-
-
-
+.footer h2{
+    color: white;
+}
+.CorrectPopUp {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .FormPopUp {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid rgb(39, 107, 174);
+    z-index: 9;
+  }
+  .formCorrect {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+  }
+.hidden{
+    display:none;
+}
 
 

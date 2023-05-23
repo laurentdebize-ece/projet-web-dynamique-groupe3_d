@@ -18,7 +18,17 @@
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
         );
     } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+        try {
+            $bdd = new PDO(
+                'mysql:host=localhost;dbname=omnes_skills;
+        charset=utf8',
+                'root',
+                '',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
     ?>
     <?php
@@ -62,6 +72,7 @@
                                 $_SESSION ['mail'] = $donnees['mailProf']; 
                                 $_SESSION ['mdp'] = $donnees['mdp']; 
                                 $_SESSION['id'] = $donnees['IdProf']; 
+                                $_SESSION['popUp'] = 0; 
                                 $trouve=1;
 
                             }

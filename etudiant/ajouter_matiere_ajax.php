@@ -1,17 +1,14 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Accueil</title>
-
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veuillez patienter...</title>
 </head>
-
 <body>
     <?php
+    session_start();
     try {
         $bdd = new PDO(
             'mysql:host=localhost;dbname=omnes_skills;
@@ -33,21 +30,13 @@
             die('Erreur : ' . $e->getMessage());
         }
     }
+    $idMat = $_POST['idMat'];
+    $idEtudiant = $_SESSION['id'];
+    $req = $bdd->prepare('INSERT INTO etumat(idMat, idEtu) VALUES(:idMatiere, :idEtudiant)');
+    $req->execute(array(
+        'idMatiere' => $idMat,
+        'idEtudiant' => $idEtudiant
+    ));
     ?>
-
-    <h1>Mon compte</h1>
-    <p>
-    <form>
-        Nom: <?php echo $_SESSION['nom'] ?> <br>
-        Prenom : <?php echo $_SESSION['prenom'] ?> <br>
-        Mon identifiant : <?php echo $_SESSION['mail'] ?> <br>
-        Mon mot de passe: <?php echo $_SESSION['mdp'] ?> <br>
-        <button type="submit" value="m'auto-évaluer" name=evaluation>
-        <a href="etudiant.php"> <button type="submit" value="retour"></a>
-    </form>
-    </p>
-
-
 </body>
-
 </html>
