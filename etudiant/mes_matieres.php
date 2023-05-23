@@ -16,6 +16,9 @@
         $('#ajouter').click(function () {
             window.location.href = "ajouter_matiere.php";
         });
+        $('#retour').click(function () {
+            window.location.href = "etudiant.php";
+        });
     });
 </script>
 <body>
@@ -76,7 +79,7 @@
                 }
             ?>
             <button id='ajouter'>Ajouter</button>
-            <button id='return'>Retour</button>
+            <button id='retour'>Retour</button>
         </div>
     </div class>
     

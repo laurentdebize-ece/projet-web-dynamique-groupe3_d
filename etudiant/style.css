@@ -28,6 +28,7 @@ body {
     background-repeat: no-repeat; 
     background-image: url(../images/logo.png);
 }
+
 .welcom_mess{
     font-size: 8rem;
     transform: translate(3%, -50%);
@@ -198,7 +199,6 @@ h3{
 a[href^='mailto']::before {
     content: '📧 ';
 }
-
 a[href^='tel']::before {
     content: '📞 ';
 }
@@ -324,7 +324,7 @@ ul li a{
     width: 90%;
 }
 
-.competence-casier-container--1{
+.competence-casier-container-4{
     background-color: rgb(180, 180, 180);
     width: 90%;
     text-decoration: none;
@@ -346,7 +346,7 @@ ul li a{
     border-color: black;
 }
 
-.competence-casier-container-0 {
+.competence-casier-container-3 {
     background-color: rgb(255, 63, 63);
     width: 90%;
     text-decoration: none;
@@ -368,7 +368,7 @@ ul li a{
     border-color: black;
 }
 
-.competence-casier-container-1 {
+.competence-casier-container-2 {
     background-color: rgb(255, 151, 32);
     width: 90%;
     text-decoration: none;
@@ -390,29 +390,7 @@ ul li a{
     border-color: black;
 }
 
-.competence-casier-container-2 {
-    background-color: rgb(219, 219, 0);
-    width: 90%;
-    text-decoration: none;
-    text-size-adjust: 20px;
-    height:auto;
-    text-decoration:none;
-    color: rgb(0, 0, 0);
-    margin: 20px;
-    align-items: center;
-    text-align: center;
-    border-radius: 30px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    padding: 20px;
-    gap: 10px;
-    border-width: 10px;
-    border-color: black;
-}
-
-.competence-casier-container-3 {
+.competence-casier-container-1 {
     background-color: rgb(0, 155, 0);
     width: 90%;
     text-decoration: none;
@@ -666,6 +644,12 @@ button a:hover{
     border-radius: 20px;
     transition: all .3s ease;
 }
+
+.casier-compte button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
 p.text{
 
     font-size: 1.2rem;
@@ -710,3 +694,35 @@ p.text{
         color: rgb(0,60,112);
         cursor:grab;
     }
+    button{
+        border-radius: 20px;
+        border: 1px solid white;
+        background-color: rgb(212, 240, 255);
+        color: rgb(0, 60, 112);
+        font-weight: bold;
+        padding: 8px 20px;
+        letter-spacing: 1px;
+        outline: none;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        float:right; 
+        margin-top: -80px;
+    }
+button:hover{
+    transform: scale(0.95);
+    background-color: rgb(0,60,112);
+    color: rgb(212, 240, 255);
+    cursor:grab;
+}
+.footer h2{
+    color: white;
+    text-align: center;
+    align-items: center;
+}
+.image{
+    margin-left: -50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

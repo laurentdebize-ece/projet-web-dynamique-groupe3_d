@@ -35,9 +35,9 @@
     <div class="nav">
         <div class="nav">
             <a href="prof.php">Home</a>
-            <a href="matieres_prof.php">Matières & compétences</a>
             <a href="navigationPromoProf.php">Mes classes</a>
             <a href="addEvalProfForm.php">Programmer une évaluation</a>
+            <a href="login.php" style="float:right">Deconnexion</a>
             <a href="mon_espace_prof.php" style="float:right">Mon espace</a>
         </div>
     </div>
@@ -56,33 +56,26 @@
                 <div class="fakeimg">
                     <div class="carte-container">
                         <div class="carte carte1">
-                            <div class="carte_img carte_img1">
-                                <a href="matieres_prof.php">
-                                    <h3>Matières & compétences</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carte carte2">
 
-                            <div class="carte_img carte_img2">
+                            <div class="carte_img carte_img1">
                                 <a href="navigationPromoProf.php">
                                     <h3>Mes classes</h3>
                                 </a>
                             </div>
 
                         </div>
-                        <div class="carte carte3">
+                        <div class="carte carte2">
 
-                            <div class="carte_img carte_img3">
+                            <div class="carte_img carte_img2">
 
                                 <a href="addEvalProfForm.php">
                                     <h3>Programmer une évaluation</h3>
                                 </a>
                             </div>
                         </div>
-                        <div class="carte carte4">
+                        <div class="carte carte3">
 
-                            <div class="carte_img carte_img4">
+                            <div class="carte_img carte_img3">
                                 <a href="mon_espace_prof.php">
                                     <h3>Mon espace</h3>
                                 </a>
@@ -159,7 +152,9 @@
         <div class="rightcolumn">
             <div class="sideblocks">
                 <h2>NEWSLETTERS</h2>
-                <div class="fakeimg" style="height:100px;"></div>
+                <div class="fakeimg">
+                <p> L'équipe 3D est fière de vous présenter son siteWeb Omnes Skills ! Nous espérons que vous passerez de bons moments lors de votre navigation !</p>
+                </div>
             </div>
             <div class="sideblocks">
                 <h2>Correction archivées</h2>
@@ -186,7 +181,7 @@
     </div>
 
     <div class="footer">
-        <h2>CONTACT</h2>
+        <h2>NOUS CONTACTER</h2>
 
         <ul>
             <li>

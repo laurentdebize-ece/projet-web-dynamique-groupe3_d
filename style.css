@@ -379,7 +379,9 @@ button a:hover{
         padding: 0;
     }
 } 
-
+.footer h2{
+    color: white;
+}
 .CorrectPopUp {
     position: relative;
     text-align: center;

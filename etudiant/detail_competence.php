@@ -247,13 +247,13 @@
         
         ?>
         
-            <div class='competence-casier-container-<?php echo $niveau['niv']; ?>'>
+            <div class='competence-casier-container-<?php echo $niveau['idNiv']; ?>'>
                 <div class='competence-casier-container-title'>
                     <h1><?php echo $nomCompSelect; ?></h1>
                 </div>
                 <div class='competence-casier-container-corps'>
                     <p>Evaluation du <?php echo date("d/m/Y", strtotime($eval['date'])); ?>.</p>
-                    <p>Note : <?php echo $niveau['niv']; ?>/3</p>   
+                    <p>Note : <?php echo $niveau['niv']; ?></p>   
                     <p>Commentaire : <?php echo $commentaire['texte']; ?></p>
                 </div>
                 <div class='competence-casier-container-button'>

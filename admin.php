@@ -30,7 +30,7 @@
     ?>
     <div class="header">
         <div class="img"> </div>
-        <h1 class=" welcom_mess">Omnes Skills</h1>
+        <div class=" welcom_mess">Omnes Skills</div>
     </div>
 
     <div class="nav">
@@ -39,6 +39,7 @@
             <a href="admin/adminPromo.php">Promotions & classes</a>
             <a href="admin/adminMatiere.php">Matières</a>
             <a href="admin/adminProf.php">Professeurs</a>
+            <a href="login.php" style="float:right">Deconnexion</a>
             <a href="admin/mon_espace_admin.php" style="float:right">Mon espace</a>
         </div>
     </div>
@@ -157,7 +158,9 @@
         <div class="rightcolumn">
             <div class="sideblocks">
                 <h2>NEWSLETTERS</h2>
-                <div class="fakeimg" style="height:100px;"></div>
+                <div class="fakeimg">
+                <p> L'équipe 3D est fière de vous présenter son siteWeb Omnes Skills ! Nous espérons que vous passerez de bons moments lors de votre navigation !</p>
+                </div>
             </div>
             <div class="sideblocks">
                 <h2></h2>
@@ -170,7 +173,7 @@
     </div>
 
     <div class="footer">
-        <h2>CONTACT</h2>
+        <h2>NOUS CONTACT</h2>
 
         <ul>
             <li>
