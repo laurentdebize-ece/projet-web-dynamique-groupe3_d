@@ -106,8 +106,8 @@
             
         <h1>Mes matières</h1>
         <?php
-        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
-
+        $response = $bdd->query('SELECT DISTINCT * FROM etumat AS em, matieres AS m, matcomp AS mc, competences AS c WHERE em.IdEtu= "'.$_SESSION['id'].'" 
+        AND em.IdMat= m.idMat AND mc.IdMat=m.idMat AND c.idCompetence=mc.IdCompetence ORDER BY m.nomMat');
         ?>
         <div class="casier">
             <?php

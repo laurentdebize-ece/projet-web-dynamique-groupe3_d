@@ -49,9 +49,14 @@
 
 
 <body>
-    <h1>Admin Matieres </h1>
+    <div class="header">
+        <button id="retour"><a href="../admin.php">Retour</a></button>
+        <h1>Les Matieres </h1>
+    </div>
+
     <h2>Voici les matières proposées par l'établissement : </h2>
     <!--trier par promo ou par matiere BOUTON RADIO -->
+
 
     <div>
         <form method="post">
@@ -93,7 +98,7 @@
                         <!--ouvre la page qui accede aux classes de la promo-->
 
                         <?php echo $donnees['nomMat']; ?>
-                        
+
                     </button>
                     <br>
                 <?php
@@ -110,7 +115,7 @@
                 while ($donnees = $reponse->fetch()) {
 
                 ?>
-                
+
                     <h3>
                         <?php echo $donnees['anneeDePromo']; ?>
                     </h3>
@@ -122,7 +127,7 @@
 
                         <?php echo $donnees['nomMat']; ?>
 
-                    
+
                     </button>
                     <br>
             <?php
@@ -133,7 +138,7 @@
 
             ?>
             <p>
-            <?php echo $donnees['nomMat']; ?>
+                <?php echo $donnees['nomMat']; ?>
 
             </p>
     <?php
@@ -179,7 +184,7 @@
                             <br>
                             <input type="radio" id="<?php echo $donnees['idMat']; ?>" name='selecRad' value="<?php echo $donnees['idMat']; ?>">
                             <?php echo $donnees['nomMat']; ?>
-                           
+
                             </input>
                             <br>
 
@@ -220,9 +225,9 @@
 
             <label for="newVolumeHoraire"><b> Volume Horaire: </b></label>
             <input type="number" placeholder="Entrez le volume hoaraire" id="newVolumeHoraire" name="newVolumeHoraire" required>
-<br>
-<br>
-            
+            <br>
+            <br>
+
             <button type="submit" class="btn">Enregistrer</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Fermer</button>
         </form>

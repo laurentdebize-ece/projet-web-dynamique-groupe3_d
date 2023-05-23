@@ -2,7 +2,13 @@ body{
   position: relative;
   min-height: 100%;
 }
-
+.header{
+  background-color:  rgb(0,60,112);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px; 
+  text-align: center;
+}
 .prof{  
   background-color: #82cfd8;
   border: none;
@@ -30,8 +36,11 @@ body{
   cursor: pointer;
 }
 
-h1{
-  color : #007FA9;
+.header h1{
+  color : white;
+  font-weight: bolder;
+  font-family: sans-serif;
+  font-size: 1.2rem;
 }
 
 h2 {
@@ -163,7 +172,27 @@ button.btndelete{
 button:hover {
   opacity:1;
 }
-
+.header button{
+  float: top;
+  float:right; 
+  border-radius: 20px;
+  border: 1px solid white;
+  background-color: white;
+  color:rgb(0,60,112) ;
+  font-weight: bolder;
+  padding: 10px 25px;
+  letter-spacing: 1px;
+  outline: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+.header button:hover {
+  transform: scale(0.95);
+  background-color: rgb(0,60,112);
+  color: white;
+  cursor:grab;
+}
 /* Float cancel and delete buttons and add an equal width */
 .cancelbtn, .deletebtn {
   float: left;
@@ -238,7 +267,152 @@ hr {
   clear: both;
   display: table;
 }
+.mespace{
+  background-color:white; 
+  background-size: cover;
+}
+.casier-compte{
+  margin-top:70px; 
+  margin-left: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(39, 107, 174);
+  color: rgb(0, 0, 0);
+  width: 90%;
+  text-decoration: none;
+  text-size-adjust: 20px;
+  height:auto;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
+}
 
+.casier-compte h1{
+  font-size: 2.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
+  justify-items: left;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+.casier-compte p{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
+  justify-items: left;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+.casier-compte-button{
+  width: max-content;
+  height: max-content;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+  font-family: sans-serif;
+  justify-items: center;
+  justify-self: center;
+  text-align: center;
+  border-radius: 20px;
+  transition: all .3s ease;
+}
+
+.casier-compte-place-buttons{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+  font-family: sans-serif;
+  transition: all .3s ease;
+}
+
+.casier-compte-button a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all .3s ease;
+}
+
+.casier-compte-button:hover{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.casier-compte-button a:hover{
+  color: rgb(255, 255, 255);
+}
+
+.casier-compte-button p{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all .3s ease;
+}
+
+.casier-compte-button p:hover{
+  color: rgb(255, 255, 255);
+}
+buttonA{
+  width: max-content;
+  height: max-content;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-decoration: none;
+  font-family: sans-serif;
+  justify-items: center;
+  justify-self: center;
+  text-align: center;
+  border-radius: 20px;
+  transition: all .3s ease;
+}
+
+buttonA:hover{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+buttonA a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all .3s ease;
+}
+
+button a:hover{
+  color: rgb(255, 255, 255);
+}
 /* Change styles for cancel button and delete button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn, .deletebtn {

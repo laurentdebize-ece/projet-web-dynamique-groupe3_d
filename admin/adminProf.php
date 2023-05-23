@@ -41,7 +41,10 @@
 
 
 <body>
-    <h1>Admin Prof</h1>
+<div class="header">
+        <button id="retour"><a href="../admin.php">Retour</a></button>
+        <h1>Les Professeurs </h1>
+    </div>
     <h2>Voici les professeurs de l'établissement : </h2>
     <!--trier par promo ou par matiere BOUTON RADIO -->
 
