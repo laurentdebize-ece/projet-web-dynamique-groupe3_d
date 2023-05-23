@@ -39,7 +39,9 @@
         <a href="mes_matieres.php">Mes matières</a>
         <a href="../eval.php">Mes évaluations</a>
         <a href="../eval_a_venir.php">Evaluations à venir</a>
-        <a href="mon_espace_etu.php" style="float:right">Mon espace</a>
+        <a href="../login.php" style="float:right">Deconnexion</a>
+        <a href="mon_espace.php" style="float:right">Mon espace</a>
+        
     </div>
     <div class="Hello">
     <?php
@@ -85,7 +87,7 @@
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="mon_espace_etu.php">
+                                <a href="mon_espace.php">
                                     <h3>Mon espace</h3>
                                     </a>
                             </div>
@@ -157,11 +159,6 @@
                 </div>
 
             </div>
-            <div class="sideblocks">
-            <h2>Salons & forums</h2>
-            <?php echo '<img src="../images/salon.jpg">';
-                    ?> 
-            </div>
         </div>
         <div class="rightcolumn">
             <div class="sideblocks">
@@ -179,7 +176,7 @@
                     ?>
                 <div class="fakeimg">
                     <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
-                        <br> <a href="evaluation.php"><input type="button" id="s'auto-évaluer" name="AutoEval" value="évaluation"></a>
+                        <br> <a href="evaluation.php"><input type="button" id="s'auto-évaluer" name="AutoEval" value="Relancer"></a>
                     </p>
 
                 <?php
