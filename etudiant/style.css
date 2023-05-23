@@ -1,87 +1,33 @@
 * {  /* enelver toutes les marges intérieurs et ext des éléments */
-    margin:0; 
-    padding: 0;
     box-sizing: border-box;
 
 }
-header {
-    position : relative;
-    height: 100vh;
-    width: 100%;
-    display: grid; 
-    grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
-    margin-bottom: 100px;
-}
-
-#section1 {
-    position: absolute; 
-    top:0; 
-    left:0; 
-    height:50%; 
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(../images/bat.jpg);
-   
-}
-.section1_partition1{
-    position: relative;
-}
-.partition1_head{
-    position: relative; 
-    height: auto; 
-    width: 100%; 
-    background-color: transparent;
-    display: flex; 
-    justify-content: space-between
-
-
+body {
+    padding: 10px;
+    font-size: 100%;
+    background-color:rgb(168, 212, 255); 
 }
 .img{
-    height:30px; 
-    width: 125px; 
-    transform: translateY(10px); 
-    background-position: center;
+    float: left;
+    position: relative; 
+    background-color: transparent;
+    display: flex; 
+    justify-content: space-between; 
+    height:35px; 
+    width: 140px; 
+    transform: translateY(0px); 
+    background-position: left;
     background-size: cover;
     background-repeat: no-repeat; 
     background-image: url(../images/logo.png);
 }
-nav{ /* les liens */
-    display: flex; 
-    justify-content: center;
-    transform: translateX(40px);
-    align-items: flex-start;
-    text-align: center;
-}
-nav ul{
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    gap:10px; 
-    list-style-type: none;
-    transform: translateX(-40px);
-
-}
-nav ul li a{
-    font-size: 1.2rem;
-    font-weight: bolder;
-    text-decoration: none;
-    font-family: sans-serif;
-    color: rgb(214, 214, 228); 
-    transition: all .3s ease;
-}
-nav ul li a:hover{
-    color: black;
-}
 .welcom_mess{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 10rem;
     color: transparent;
-    transform: translateX(13%);  
     -webkit-text-stroke: 2px white;
     cursor: pointer; 
     transition: all .3s ease; 
@@ -91,73 +37,160 @@ nav ul li a:hover{
     -webkit-text-stroke: 0;
 
 }
-.section1_partition2{
-    position: relative;
+nav{ /* les liens */
     display: flex; 
     justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-repeat: no-repeat; 
+    transform: translateX(40px);
+    align-items: flex-start;
+    text-align: center;
+}
+.nav{
+    overflow: hidden; 
     background-color: rgb(39, 107, 174);
-   
+}
+.nav a{
+ float: left;
+ display: block;
+ color: aliceblue;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+ font-family: sans-serif;
+ font-size: 1.2rem;
+ font-weight: bolder;
+}
+.nav a:hover{
+    background-color:rgb(170, 212, 255) ;
+    color: black;
+}
+table{
+    align-content: center;
+    width: 100%;
+    padding: 20px;
+}
+td{
+    border : 1px solid rgb(0,60,112) ;
+    align-items:center; 
+    text-align: center;
+    color: black;
+    height:80px; 
+    width:100px; 
+}
+input{
+    border-radius: 20px;
+    border: 1px solid rgb(0, 60, 112);
+    background-color: rgb(0, 60, 112);
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    outline: none;
+    text-transform: none;
+    transition: transform 80ms ease-in;
+}
+input:hover {
+    transform: scale(0.95);
+    background-color: white;
+    color: rgb(0,60,112);
+    cursor:grab;
 }
 .carte-container{
-    height:80%; 
-    width: 60%;
+    height: 80%;
+    width: 100%;
     display: grid; 
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: 1fr ;
     gap:10px; 
 
 }
-
 .carte{
     display:grid; 
-    padding: 5px;
     grid-template-rows: 4fr 1fr ;
-    background-color: rgb(62, 165, 255);
+    background-color: rgb(0,60,112);
     border-radius: 10px;
 }
-
 .carte_img{
-    border-radius: 10px;
-    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-
+.row::after{
+    content:""; 
+    display:table; 
+    clear:both;
+    
+}
+.leftcolumn{
+    float: left; 
+    width:75%; 
+}
+.rightcolumn {
+    float: left;
+    width: 25%; 
+    padding-left: 20px;
+}
+h2{
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: black; 
+    text-align: center;
+}
+.header{
+    padding: 200px;
+    text-align: center;
+    background: white; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y:-270px;
+    background-image: url(../images/bat.jpg);
+}
+.header h1 {
+    font-size: 50px;
+  }
+.sideblocks{
+background-color: rgb(219, 242, 255);
+padding: 60px; 
+margin-top: 20px;
+color:black;
+}
+.fakeimg {
+    background-color: rgb(161, 209, 224);
+    width: 100%;
+    padding: 20px;
+  }
+  .footer{
+color: white;
+padding: 20px;
+text-align: center;
+margin-top: 20px;
+background-color: rgb(39, 73, 125);
+}
 h3{
     text-align: center;
-    padding-top: 80%;
     font-size: 1.2rem;
     font-weight: bolder;
     text-decoration: none;
     font-family: sans-serif;
     color: white;
 }
-
-h3:hover{
-    color: black;
+a[href^='mailto']::before {
+    content: '📧 ';
 }
 
-section h1{
-    font-size: 5rem;
-    font-weight: bolder;
+a[href^='tel']::before {
+    content: '📞 ';
+}
+ul li a{
+    color: white;
     text-decoration: none;
-    font-family: sans-serif;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
 }
-
-section a{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
+@media screen and (max-width:800px){
+    .leftcolumn, .rightcolumn{
+        width:100%; 
+        padding: 0;
+    }
+} 
 
 .casier{
     position: relative;
@@ -254,11 +287,8 @@ section a{
 
 .competence-casier{
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
@@ -266,111 +296,322 @@ section a{
 }
 
 .competence-casier-container--1{
-    background-color: rgb(112, 112, 112);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(180, 180, 180);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container--1:hover{
-    background-color: rgb(54, 54, 54);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-0 {
     background-color: rgb(255, 63, 63);
-    width: 100%;
-    height: fit-content;
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-0:hover{
-    background-color: rgb(174, 40, 40);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-1 {
     background-color: rgb(255, 151, 32);
-    width: 100%;
-    height: fit-content;
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-1:hover{
-    background-color: rgb(189, 122, 6);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-2 {
-    background-color: rgb(255, 255, 0);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(219, 219, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
-}
-
-.competence-casier-container-2:hover{
-    background-color: rgb(189, 189, 6);
-    color: white;
+    border-width: 10px;
+    border-color: black;
 }
 
 .competence-casier-container-3 {
-    background-color: rgb(0, 255, 0);
-    width: 100%;
-    height: fit-content;
+    background-color: rgb(0, 155, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
     text-decoration:none;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     margin: 20px;
+    align-items: center;
     text-align: center;
-    text-justify:left;
-    display: grid;
-    border-radius: 10px;
+    border-radius: 30px;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    padding: 20px;
     gap: 10px;
+    border-width: 10px;
+    border-color: black;
 }
 
-.competence-casier-container-3:hover{
-    background-color: rgb(0, 189, 0);
-    color: white;
+.competence-casier-container-title h1{
+    grid-column: 1 / span 4;
+    font-size: 2.2rem;
+    font-weight:bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.competence-casier-container-corps p{
+    grid-column: 1 / span 4;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.competence-casier-container-button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+.competence-casier-container-button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+
+
+.competence-casier-container-button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+
+.competence-casier-container-button a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte{
+    background-color: rgb(62, 165, 255);
+    color: rgb(0, 0, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.casier-compte h1{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte-button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+.casier-compte-place-buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: all .3s ease;
+}
+
+.casier-compte-button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button p{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button p:hover{
+    color: rgb(255, 255, 255);
+}
+
+button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+button a:hover{
+    color: rgb(255, 255, 255);
 }
