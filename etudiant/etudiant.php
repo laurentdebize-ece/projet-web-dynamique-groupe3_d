@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Accueil_etudiant</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
     </script>
 </head>
@@ -30,7 +30,7 @@
         <a href="mes_matieres.php">Mes matières</a>
         <a href="../eval.php">Mes évaluations</a>
         <a href="../eval_a_venir.php">Evaluations à venir</a>
-        <a href="../mon_espace.php" style="float:right">Mon espace</a>
+        <a href="mon_espace.php" style="float:right">Mon espace</a>
     </div>
 
 
@@ -69,7 +69,7 @@
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="../mon_espace.php">
+                                <a href="mon_espace.php">
                                     <h3>Mon espace</h3>
                             </div>
 

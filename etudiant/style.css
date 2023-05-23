@@ -85,7 +85,7 @@ input{
     padding: 12px 45px;
     letter-spacing: 1px;
     outline: none;
-    text-transform: uppercase;
+    text-transform: none;
     transition: transform 80ms ease-in;
 }
 input:hover {
@@ -405,10 +405,10 @@ ul li a{
     border-color: black;
 }
 
-.competence-casier-container-title{
+.competence-casier-container-title h1{
     grid-column: 1 / span 4;
     font-size: 2.2rem;
-    font-weight: bolder;
+    font-weight:bolder;
     text-decoration: none;
     font-family: sans-serif;
     color: rgb(0, 0, 0);
@@ -421,10 +421,10 @@ ul li a{
     border-radius: 10px;
 }
 
-.competence-casier-container-corps{
+.competence-casier-container-corps p{
     grid-column: 1 / span 4;
-    font-size: 1.6rem;
-    font-weight: bolder;
+    font-size: 1.5rem;
+    font-weight: bold;
     text-decoration: none;
     font-family: sans-serif;
     color: rgb(0, 0, 0);
@@ -443,11 +443,12 @@ ul li a{
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    font-size: 2.2rem;
+    font-size: 1.2rem;
     font-weight: bolder;
     text-decoration: none;
     font-family: sans-serif;
     justify-items: center;
+    justify-self: center;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -475,3 +476,142 @@ ul li a{
     color: rgb(255, 255, 255);
 }
 
+.casier-compte{
+    background-color: rgb(62, 165, 255);
+    color: rgb(0, 0, 0);
+    width: 90%;
+    text-decoration: none;
+    text-size-adjust: 20px;
+    height:auto;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.casier-compte h1{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    justify-items: left;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.casier-compte-button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+.casier-compte-place-buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: all .3s ease;
+}
+
+.casier-compte-button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.casier-compte-button p{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+.casier-compte-button p:hover{
+    color: rgb(255, 255, 255);
+}
+
+button{
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+button a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
+}
+
+button a:hover{
+    color: rgb(255, 255, 255);
+}

@@ -24,7 +24,17 @@
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
         );
     } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+        try {
+            $bdd = new PDO(
+                'mysql:host=localhost;dbname=omnes_skills;
+        charset=utf8',
+                'root',
+                '',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
     ?>
     <div class="header">
@@ -37,7 +47,7 @@
         <a href="mes_matieres.php">Mes matières</a>
         <a href="../eval.php">Mes évaluations</a>
         <a href="../eval_a_venir.php">Evaluations à venir</a>
-        <a href="../mon_espace.php" style="float:right">Mon espace</a>
+        <a href="mon_espace.php" style="float:right">Mon espace</a>
     </div>
 
 
@@ -76,7 +86,7 @@
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="../mon_espace.php">
+                                <a href="mon_espace.php">
                                     <h3>Mon espace</h3>
                             </div>
 
@@ -109,8 +119,7 @@
                                 <b>Évaluation</b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
-    AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
+                        <?php /*$id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '" AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
                         while ($donnees = $id->fetch()) {
                         ?>
                             <tr>
@@ -142,7 +151,7 @@
                             </tr>
                         <?php
                         }
-                        ?>
+                        */?>
                     </table>
                 </div>
             </div>
@@ -205,7 +214,11 @@
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+        try {
+            $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
     ?>
     <section>
