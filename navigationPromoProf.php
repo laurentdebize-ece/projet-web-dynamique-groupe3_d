@@ -157,10 +157,10 @@
                 </div>
                 <form>
                     <div class='container'>
-                        <form id=ModifComp>
+                        <form id=ModifComp action="ModifProf.php" method="post">
                             <div class='row' id=comp2>
                                 <div class='col-sm-4'>
-                                    <label for="progression">Nom de la Compétence :</label>
+                                    <label for="NompComp">Nom de la Compétence :</label>
                                     <input type='text' id="NomComp" name='NomComp'>
                                 </div>
                                 <div class='col-sm-4'>
@@ -174,7 +174,7 @@
                             </div>
                             <div class='row' id=comp3>
                                 <div class='col-sm-4'>
-                                    <button onClick=CompModif()>Modifier</button>
+                                <input type='submit' id="Envoyer" value=Modifier>
                                 </div>
                                 <div class='col-sm-4'>
                                     <button onClick=Supprimer()>Supprimer</button>
@@ -202,7 +202,7 @@
         var navigation = 0;
         var classe;
         var promo;
-        var comp;
+        var comp =0;
         var etudiant = 0;
         var progress;
 
@@ -298,40 +298,11 @@
     ?>
 
     <script>
-        function CompModif() {
-            var NewNomComp = document.getElementById("NomComp").value;
-            var Newprogress = document.getElementById("progression").value;
-            <?php
-            $comp = '<script type="text/javascript">document.write(comp);</script>';
-            $etu = '<script type="text/javascript">document.write(etudiant);</script>';
-            $Newprogress = '<script type="text/javascript">document.write(Newprogress);</script>';
-            $response4 = $bdd->query("SELECT * FROM eval AS e, evalcomp AS ec WHERE e.idEval=ec.IdEval AND ec.IdComp='$comp' AND idEtu='$etu'");
-            $donneesTransi = $response4->fetch();
-            $NewIdEval = $donneesTransi;
-            $req = $bdd->prepare("UPDATE evalcomp AS ec SET IdComp = :Newprogress WHERE ec.idEval = :NewIdEval");
-            $req->execute(array('Newprogress' => $Newprogress, 'NewIdEval' => $NewIdEval));
-            ?>
-            if (NewNomComp != '') {
-                <?php
-                $response = $bdd->query("SELECT nomCompetence, idNiv FROM competences WHERE idCompetence='$comp'");
-                $donnees = $response->fetch();
-                $nomComp = $donnees;
-                $NewNomComp = '<script type="text/javascript">document.write(NewNomComp);</script>';
-                $reponse = $bdd->query("SELECT idCompetence FROM competences WHERE nomCompetence='$nomComp'");
-                while ($donnees2 = $reponse->fetch()) {
-                    $IDcomp = $donnees2['idCompetence'];
-                    $req2 = $bdd->prepare("UPDATE competences AS c SET nomCompetence = :NewNomComp WHERE c.idCompetence = :IDcomp");
-                    $req2->execute(array('NewNomComp' => $NewNomComp, 'IDcomp' => $IDcomp));
-                }
-                ?>
-            }
-        }
-
-        function Supprimer() {
-
+        function Modif(){
+            location.href = 'ModifProf.php';
         }
     </script>
-
+    
 </body>
 
 </html>
