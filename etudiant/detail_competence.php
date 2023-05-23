@@ -46,7 +46,7 @@
         <div class="nav">
             <a href="etudiant.php">Home</a>
             <a href="mes_matieres.php">Mes matières</a>
-            <a href="../eval.php">Mes évaluations</a>
+            <a href="evals.php">Mes évaluations</a>
             <a href="../eval_a_venir.php">Evaluations à venir</a>
             <a href="mon_espace.php" style="float:right">Mon espace</a>
         </div>
@@ -68,7 +68,7 @@
                             <div class="carte carte2">
 
                                 <div class="carte_img carte_img2">
-                                    <a href="../eval.php">
+                                    <a href="evals.php">
                                         <h3>Mes évaluations</h3>
                                     </a>
                                 </div>
@@ -257,7 +257,7 @@
                     <p>Commentaire : <?php echo $commentaire['texte']; ?></p>
                 </div>
                 <div class='competence-casier-container-button'>
-                    <a href="evaluation.php?nomComp=">S'évaluer</a>
+                    <a href="evaluation.php?idComp=<?php echo $idCompSelect;?>&idEtu=<?php echo $idEtudiant;?>&idEval=<?php echo $eval['idEval'];?>">S'évaluer</a>
                 </div>
             </div>
         <?php

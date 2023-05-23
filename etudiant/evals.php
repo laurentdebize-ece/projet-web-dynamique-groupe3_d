@@ -1,24 +1,41 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
+<html lang="fr">
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Accueil_etudiant</title>
+    <title>Mes évaluations</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
-    </script>
 </head>
 
 <body>
-    <?php
-    // Afficher le nom et prenom de la personne connectee
-    $nom = $_SESSION['nom'];
-    $prenom = $_SESSION['prenom'];
-    echo "<h1>Bienvenue $prenom ".str_replace('_', ' ',$nom)."</h1>";
-
+<?php
+    // pour recuperer la date du jour 
+    $date = time();
+    try {
+        $bdd = new PDO(
+            'mysql:host=localhost;dbname=omnes_skills;
+    charset=utf8',
+            'root',
+            'root',
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+        );
+    } catch (Exception $e) {
+        try {
+            $bdd = new PDO(
+                'mysql:host=localhost;dbname=omnes_skills;
+        charset=utf8',
+                'root',
+                '',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
     ?>
     <div class="header">
         <div class="img"> </div>
@@ -78,6 +95,51 @@
                     </div>
                 </div>
             </div>
+            <?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch (Exception $e) {
+        try {
+            $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+    ?>
+    <section>
+            
+        <h1>Mes matières</h1>
+        
+        <?php
+        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
+        ?>
+
+        <div class="casier">
+            <?php
+                while ($donnees = $response->fetch()) {
+                    $nomMat = lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat'])));
+            ?>
+                <a href="detail_matiere.php?nomMat=<?php echo $donnees['nomMat'];?>">
+                    <div class="casier-container" id="<?php echo $nomMat?>" name="<?php echo $nomMat?>">
+                        <div class="casier-titre">
+                            <div class="casier-container-img">
+                                <?php 
+                                    $imagePath = "images/matieres/" . lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat']))) . ".jpg";
+                                    if (file_exists($imagePath)) {
+                                        echo '<img src="' . $imagePath . '">';
+                                    } else {
+                                        echo '<img src="images/default.jpg">';
+                                    }
+                                ?>
+                            </div>
+                            <?php echo $donnees['nomMat'];?>
+                        </div>
+                    </div>
+                </a>
+            <?php
+                }
+            ?>
+        </div>
             <div class="sideblocks">
                 <h2>PLANNING</h2>
                 <div class="fakeimg">
@@ -102,8 +164,7 @@
                                 <b>Évaluation</b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
-    AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
+                        <?php /*$id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '" AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
                         while ($donnees = $id->fetch()) {
                         ?>
                             <tr>
@@ -135,7 +196,7 @@
                             </tr>
                         <?php
                         }
-                        ?>
+                        */?>
                     </table>
                 </div>
             </div>
@@ -194,7 +255,7 @@
         </ul>
 
     </div>
-
+    
 </body>
 
 </html>

@@ -2,6 +2,11 @@
     box-sizing: border-box;
 
 }
+
+a{
+    text-decoration: none;
+}
+
 body {
     padding: 10px;
     font-size: 100%;
@@ -193,6 +198,7 @@ ul li a{
 } 
 
 .casier{
+    text-decoration: none;
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -249,7 +255,7 @@ ul li a{
 }
 
 .casier-container:hover{
-
+    transform: scale(1.2);
     background-color: rgb(62, 165, 255);
     color: white;
 }
@@ -260,6 +266,7 @@ ul li a{
     font-weight: bolder;
     text-decoration: none;
     font-family: sans-serif;
+    text-decoration: none;
     color: white;
     justify-items: left;
     text-align: center;
@@ -614,4 +621,34 @@ button a{
 
 button a:hover{
     color: rgb(255, 255, 255);
+}
+
+.casier-compte button{
+    width: max-content;
+    height: max-content;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    justify-items: center;
+    justify-self: center;
+    text-align: center;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+p.text{
+
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: black;
+    justify-items: left;
+    text-align: center;
+    padding-right: 300 px;
+
 }
