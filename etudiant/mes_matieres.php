@@ -85,6 +85,46 @@
                     </div>
                 </div>
             </div>
+            <?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    ?>
+    <section>
+            
+        <h1>Mes matières</h1>
+        <?php
+        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
+
+        ?>
+        <div class="casier">
+            <?php
+                while ($donnees = $response->fetch()) {
+                    $nomMat = lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat'])));
+            ?>
+                <a href="detail_matiere.php?nomMat=<?php echo $donnees['nomMat'];?>">
+                    <div class="casier-container" id="<?php echo $nomMat?>" name="<?php echo $nomMat?>">
+                        <div class="casier-titre">
+                            <div class="casier-container-img">
+                                <?php 
+                                    $imagePath = "images/matieres/" . lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat']))) . ".jpg";
+                                    if (file_exists($imagePath)) {
+                                        echo '<img src="' . $imagePath . '">';
+                                    } else {
+                                        echo '<img src="images/default.jpg">';
+                                    }
+                                ?>
+                            </div>
+                            <?php echo $donnees['nomMat'];?>
+                        </div>
+                    </div>
+                </a>
+            <?php
+                }
+            ?>
+        </div>
             <div class="sideblocks">
                 <h2>PLANNING</h2>
                 <div class="fakeimg">
@@ -201,47 +241,7 @@
         </ul>
 
     </div>
-    <?php
-    try {
-        $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
-    ?>
-    <section>
-            
-        <h1>Mes matières</h1>
-        <?php
-        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
-
-        ?>
-        <div class="casier">
-            <?php
-                while ($donnees = $response->fetch()) {
-                    $nomMat = lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat'])));
-            ?>
-                <a href="detail_matiere.php?nomMat=<?php echo $donnees['nomMat'];?>">
-                    <div class="casier-container" id="<?php echo $nomMat?>" name="<?php echo $nomMat?>">
-                        <div class="casier-titre">
-                            <div class="casier-container-img">
-                                <?php 
-                                    $imagePath = "images/matieres/" . lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat']))) . ".jpg";
-                                    if (file_exists($imagePath)) {
-                                        echo '<img src="' . $imagePath . '">';
-                                    } else {
-                                        echo '<img src="images/default.jpg">';
-                                    }
-                                ?>
-                            </div>
-                            <?php echo $donnees['nomMat'];?>
-                        </div>
-                    </div>
-                </a>
-            <?php
-                }
-            ?>
-        </div>
-    </section>
+    
 </body>
 
 </html>
