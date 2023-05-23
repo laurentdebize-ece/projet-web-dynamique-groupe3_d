@@ -47,7 +47,7 @@
     <div class="nav">
         <a href="etudiant.php">Home</a>
         <a href="mes_matieres.php">Mes matières</a>
-        <a href="evals.php">Mes évaluations</a>
+        <a href="../eval.php">Mes évaluations</a>
         <a href="../eval_a_venir.php">Evaluations à venir</a>
         <a href="mon_espace_etu.php" style="float:right">Mon espace</a>
     </div>
@@ -76,7 +76,7 @@
                         <div class="carte carte2">
 
                             <div class="carte_img carte_img2">
-                                <a href="evals.php">
+                                <a href="../eval.php">
                                     <h3>Mes évaluations</h3>
                                 </a>
                             </div>
@@ -139,41 +139,46 @@
                                 </td>
                                 <td><?php echo $donnees['date']; ?> </td>
                                 <td><?php echo $donnees['nomProf'] . " " . $donnees['prenomProf']; ?></td>
-                                <td><?php switch ($donnees['niv']) {
-                                        case 0: {
-                                                echo "NON EVALUÉ";
-                                                break;
-                                            }
+                                <td><?php switch ($donnees['idNiv']) {
                                         case 1: {
-                                                echo "EN COURS D'AQUISITION";
+                                                echo "AQUIS";
                                                 break;
                                             }
                                         case 2: {
-                                                echo "AQUIS";
+                                                echo "EN COURS D'AQUISITION";
                                                 break;
                                             }
                                         case 3: {
                                                 echo "NON AQUIS";
                                                 break;
                                             }
+                                        case 4: {
+                                                echo "NON EVALUÉ";
+                                                break;
+                                            }
                                     } ?></td>
                                 <td><?php echo $donnees['texte']; ?></td>
-                                <td><input type=button id="s'auto-évaluer" name="AutoEval" value="S'auto-évaluer"></td>
+                                <td><a href="evaluation.php"><input type=button id="s'auto-évaluer" name="AutoEval" value="S'auto-évaluer"></a></td>
                             </tr>
                         <?php
                         }
                         ?>
                     </table>
                 </div>
+
+            </div>
+            <div class="sideblocks">
+            <h2>Salons & forums</h2>
+            <?php echo '<img src="../images/salon.jpg">';
+                    ?> 
             </div>
         </div>
         <div class="rightcolumn">
             <div class="sideblocks">
                 <h2>NEWSLETTERS</h2>
-                <div class="fakeimg" style="height:100px;">
-                    <?php echo '<img src="..images/salon.jpg">';
-                    ?> 
-                    </div>
+                <div class="fakeimg">
+                    <p> L'équipe 3D est fière de vous présenter son siteWeb Omnes Skills ! Nous espérons que vous passerez de bons moments lors de votre navigation !</p>
+                </div>
             </div>
             <div class="sideblocks">
                 <h2>Les evaluations à revoir</h2>
@@ -184,7 +189,7 @@
                     ?>
                 <div class="fakeimg">
                     <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
-                        <input type="button" id="s'auto-évaluer" name="AutoEval" value="M'auto-évaluer">
+                        <br> <a href="evaluation.php"><input type="button" id="s'auto-évaluer" name="AutoEval" value="évaluation"></a>
                     </p>
 
                 <?php
@@ -206,7 +211,7 @@
     </div>
 
     <div class="footer">
-        <h2>CONTACT</h2>
+        <h2>NOUS CONTACTER</h2>
 
         <ul>
             <li>

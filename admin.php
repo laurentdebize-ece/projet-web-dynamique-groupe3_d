@@ -157,7 +157,9 @@
         <div class="rightcolumn">
             <div class="sideblocks">
                 <h2>NEWSLETTERS</h2>
-                <div class="fakeimg" style="height:100px;"></div>
+                <div class="fakeimg" style="height:100px;">
+                <p> L'équipe 3D est fière de vous présenter son siteWeb Omnes Skills ! Nous espérons que vous passerez de bons moments lors de votre navigation !</p>
+                </div>
             </div>
             <div class="sideblocks">
                 <h2></h2>
@@ -170,7 +172,7 @@
     </div>
 
     <div class="footer">
-        <h2>CONTACT</h2>
+        <h2>NOUS CONTACTER</h2>
 
         <ul>
             <li>

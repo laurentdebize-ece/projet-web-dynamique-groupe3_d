@@ -100,7 +100,9 @@
             <?php
                 }
             ?>
-            <button id='retour'>Retour</button>
+            <button id='ajouter'>Ajouter</button>
+           <a href="mes_matieres.php"><button id='return'>Retour</button></a>
+            </div>
         
             
     </div>
