@@ -25,8 +25,11 @@
         die('Erreur : ' . $e->getMessage());
     }
     ?>
+     <div class="head">
+    <h1>Les évaluations à venir</h1>
+    <a href="etudiant/etudiant.php"><button type="submit" id="retour" value=retour>Retour</button></a>
+    </div>
     <table>
-        <caption>Planning des evaluations</caption>
     <tr>
                 <td>
                     <b>Compétence</b>
@@ -77,7 +80,7 @@
                             ?>
             </td>
             <td>  <?php echo $donnees['texte']; ?></td>
-            <td> <input type=button id="eval" name="eval" value="s'évaluer"> </td>
+            <td> <a href="etudiant/evaluation.php"> <input type=button id="eval" name="eval" value="s'évaluer"></a> </td>
                 </tr>
             <?php
         }

@@ -30,9 +30,8 @@
     ?>
     <div class="header">
         <div class="img"> </div>
-        <h1 class=" welcom_mess">Omnes Skills</h1>
+        <div class=" welcom_mess">Omnes Skills</div>
     </div>
-
     <div class="nav">
         <div class="nav">
             <a href="prof.php">Home</a>
@@ -42,7 +41,14 @@
             <a href="mon_espace_prof.php" style="float:right">Mon espace</a>
         </div>
     </div>
-
+    <div class="Hello">
+    <?php
+    // Afficher le nom et prenom de la personne connectee
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+    echo "<h1>Bienvenue $prenom " . str_replace('_', ' ', $nom) . "</h1>";
+    ?>
+    </div>
     <div class="row">
         <div class="leftcolumn">
             <div class="sideblocks">
@@ -79,6 +85,7 @@
                             <div class="carte_img carte_img4">
                                 <a href="mon_espace_prof.php">
                                     <h3>Mon espace</h3>
+                                </a>
                             </div>
 
                         </div>

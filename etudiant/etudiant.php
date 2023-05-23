@@ -14,8 +14,8 @@
 
 <body>
 
-<?php
-$date = time();
+    <?php
+    $date = time();
     try {
         $bdd = new PDO(
             'mysql:host=localhost;dbname=omnes_skills;
@@ -31,7 +31,7 @@ $date = time();
 
     <div class="header">
         <div class="img"> </div>
-        <h1 class=" welcom_mess">Omnes Skills</h1>
+        <div class=" welcom_mess">Omnes Skills</div>
     </div>
 
     <div class="nav">
@@ -41,14 +41,15 @@ $date = time();
         <a href="../eval_a_venir.php">Evaluations à venir</a>
         <a href="mon_espace_etu.php" style="float:right">Mon espace</a>
     </div>
+    <div class="Hello">
     <?php
     // Afficher le nom et prenom de la personne connectee
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
-    echo "<h1>Bienvenue $prenom ".str_replace('_', ' ',$nom)."</h1>";
+    echo "<h1>Bienvenue $prenom " . str_replace('_', ' ', $nom) . "</h1>";
 
     ?>
-
+</div>
     <div class="row">
         <div class="leftcolumn">
             <div class="sideblocks">
@@ -86,6 +87,7 @@ $date = time();
                             <div class="carte_img carte_img4">
                                 <a href="mon_espace_etu.php">
                                     <h3>Mon espace</h3>
+                                    </a>
                             </div>
 
                         </div>
@@ -117,7 +119,7 @@ $date = time();
                                 <b>Évaluation</b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
+                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date >= "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
     AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
                         while ($donnees = $id->fetch()) {
                         ?>
@@ -158,23 +160,26 @@ $date = time();
         <div class="rightcolumn">
             <div class="sideblocks">
                 <h2>NEWSLETTERS</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
+                <div class="fakeimg" style="height:100px;">
+                    <?php echo '<img src="..images/salon.jpg">';
+                    ?> 
+                    </div>
             </div>
             <div class="sideblocks">
                 <h2>Les evaluations à revoir</h2>
                 <p>
-                <?php $eval = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c WHERE ev.date < "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
+                    <?php $eval = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c WHERE ev.date < "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
     AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND n.idNiv = c.idNiv AND n.niv=0 ORDER BY ev.date ');
-                while ($donnees = $eval->fetch()) {
-                ?>
-                    <div class="fakeimg">
-                        <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
-                            <input type="button" id="s'auto-évaluer" name="AutoEval" value="M'auto-évaluer">
-                        </p>
-    
+                    while ($donnees = $eval->fetch()) {
+                    ?>
+                <div class="fakeimg">
+                    <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
+                        <input type="button" id="s'auto-évaluer" name="AutoEval" value="M'auto-évaluer">
+                    </p>
+
                 <?php
-                }
-                
+                    }
+
                 ?>
                 </div>
                 </p>
@@ -182,9 +187,9 @@ $date = time();
             <div class="sideblocks">
                 <h2>Pour aller plus loin...</h2>
                 <p>
-                <a href="https://www.w3schools.com/default.asp">w3schools</a><br>
-                <a href="https://mathenpoche.sesamath.net">mathenpoche</a><br>
-                <a href="https://www.univdocs.com/2020/06/physique-des-semiconducteurs.html">physique</a>
+                    <a href="https://www.w3schools.com/default.asp">w3schools</a><br>
+                    <a href="https://mathenpoche.sesamath.net">mathenpoche</a><br>
+                    <a href="https://www.univdocs.com/2020/06/physique-des-semiconducteurs.html">physique</a>
                 </p>
             </div>
         </div>
