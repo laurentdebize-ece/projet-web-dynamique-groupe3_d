@@ -1,19 +1,18 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
+<html lang="fr">
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Accueil_etudiant</title>
+    <title>Mes matières</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
-    </script>
 </head>
 
 <body>
-    <?php
+<?php
     // pour recuperer la date du jour 
     $date = time();
     try {
@@ -25,7 +24,17 @@
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
         );
     } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+        try {
+            $bdd = new PDO(
+                'mysql:host=localhost;dbname=omnes_skills;
+        charset=utf8',
+                'root',
+                '',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
     ?>
     <div class="header">
@@ -34,14 +43,13 @@
     </div>
 
     <div class="nav">
-        <div class="nav">
-            <a href="etudiant.php">Home</a>
-            <a href="matieres.php">Mes matières</a>
-            <a href="eval.php">Mes évaluations</a>
-            <a href="eval_a_venir.php">Evaluations à venir</a>
-            <a href="mon_espace.php" style="float:right">Mon espace</a>
-        </div>
+        <a href="etudiant.php">Home</a>
+        <a href="mes_matieres.php">Mes matières</a>
+        <a href="../eval.php">Mes évaluations</a>
+        <a href="../eval_a_venir.php">Evaluations à venir</a>
+        <a href="mon_espace.php" style="float:right">Mon espace</a>
     </div>
+
 
     <div class="row">
         <div class="leftcolumn">
@@ -51,7 +59,7 @@
                     <div class="carte-container">
                         <div class="carte carte1">
                             <div class="carte_img carte_img1">
-                                <a href="matieres.php">
+                                <a href="mes_matieres.php">
                                     <h3>Mes matières</h3>
                                 </a>
                             </div>
@@ -59,7 +67,7 @@
                         <div class="carte carte2">
 
                             <div class="carte_img carte_img2">
-                                <a href="eval.php">
+                                <a href="../eval.php">
                                     <h3>Mes évaluations</h3>
                                 </a>
                             </div>
@@ -69,7 +77,7 @@
 
                             <div class="carte_img carte_img3">
 
-                                <a href="eval_a_venir.php">
+                                <a href="../eval_a_venir.php">
                                     <h3>Évaluations à venir</h3>
                                 </a>
 
@@ -87,6 +95,46 @@
                     </div>
                 </div>
             </div>
+            <?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    ?>
+    <section>
+            
+        <h1>Mes matières</h1>
+        <?php
+        $response = $bdd->query('SELECT * FROM matieres ORDER BY nomMat ASC');
+
+        ?>
+        <div class="casier">
+            <?php
+                while ($donnees = $response->fetch()) {
+                    $nomMat = lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat'])));
+            ?>
+                <a href="detail_matiere.php?nomMat=<?php echo $donnees['nomMat'];?>">
+                    <div class="casier-container" id="<?php echo $nomMat?>" name="<?php echo $nomMat?>">
+                        <div class="casier-titre">
+                            <div class="casier-container-img">
+                                <?php 
+                                    $imagePath = "images/matieres/" . lcfirst(preg_replace("/[\p{P}]/u", "", iconv('UTF-8', 'ASCII//TRANSLIT', $donnees['nomMat']))) . ".jpg";
+                                    if (file_exists($imagePath)) {
+                                        echo '<img src="' . $imagePath . '">';
+                                    } else {
+                                        echo '<img src="images/default.jpg">';
+                                    }
+                                ?>
+                            </div>
+                            <?php echo $donnees['nomMat'];?>
+                        </div>
+                    </div>
+                </a>
+            <?php
+                }
+            ?>
+        </div>
             <div class="sideblocks">
                 <h2>PLANNING</h2>
                 <div class="fakeimg">
@@ -111,8 +159,7 @@
                                 <b>Évaluation</b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
-    AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
+                        <?php /*$id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '" AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
                         while ($donnees = $id->fetch()) {
                         ?>
                             <tr>
@@ -144,8 +191,7 @@
                             </tr>
                         <?php
                         }
-                        ?>
-
+                        */?>
                     </table>
                 </div>
             </div>
@@ -157,25 +203,30 @@
             </div>
             <div class="sideblocks">
                 <h2>Les evaluations à revoir</h2>
+                <p>
                 <?php $eval = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c WHERE ev.date < "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
     AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND n.idNiv = c.idNiv AND n.niv=0 ORDER BY ev.date ');
                 while ($donnees = $eval->fetch()) {
                 ?>
                     <div class="fakeimg">
                         <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
-                            <input type=button id="s'auto-évaluer" name="AutoEval" value="S'auto-évaluer">
+                            <input type="button" id="s'auto-évaluer" name="AutoEval" value="M'auto-évaluer">
                         </p>
-                    </div>
+    
                 <?php
                 }
+                
                 ?>
+                </div>
+                </p>
             </div>
             <div class="sideblocks">
                 <h2>Pour aller plus loin...</h2>
+                <p>
                 <a href="https://www.w3schools.com/default.asp">w3schools</a><br>
                 <a href="https://mathenpoche.sesamath.net">mathenpoche</a><br>
                 <a href="https://www.univdocs.com/2020/06/physique-des-semiconducteurs.html">physique</a>
-
+                </p>
             </div>
         </div>
     </div>
@@ -199,7 +250,7 @@
         </ul>
 
     </div>
-
+    
 </body>
 
 </html>

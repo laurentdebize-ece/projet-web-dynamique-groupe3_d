@@ -17,7 +17,7 @@
             'mysql:host=localhost;dbname=omnes_skills;
     charset=utf8',
             'root',
-            'root',
+            '',
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
         );
     } catch (Exception $e) {
