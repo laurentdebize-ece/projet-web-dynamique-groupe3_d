@@ -392,17 +392,31 @@ button a:hover{
     position: fixed;
     left: 45%;
     top: 5%;
+    height: 600px;
+    width: 400px;
     transform: translate(-45%, 5%);
     border: 2px solid rgb(39, 107, 174);
     z-index: 9;
   }
   .formCorrect {
-    max-width: 300px;
+    max-width: 396px;
     padding: 20px;
     background-color: #fff;
+    height: 595px;
+    width: 400px;
   }
 .hidden{
     display:none;
+}
+.margeT{
+    margin-top: 20px;
+}
+#Commentaire{
+    height: 200px;
+    transition: none;
+    background-color: #fff;
+    color: black;
+    overflow:visible;
 }
 
 
