@@ -76,7 +76,7 @@
                 }
             ?>
             <button id='ajouter'>Ajouter</button>
-            <button id='return'>Retour</button>
+            <a href="etudiant.php"><button id='return'>Retour</button></a>
         </div>
     </div class>
     

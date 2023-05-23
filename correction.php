@@ -10,7 +10,7 @@
 <body>
     <div class="head"> 
     <h1>Vous pouvez à présent corriger l'évaluation !</h1>
-    <a href="etudiant.php"><button type="submit" id="retour" value=retour>Retour</button></a>
+    <a href="prof.php"><button type="submit" id="retour" value=retour>Retour</button></a>
     </div>
 
 </body>
