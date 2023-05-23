@@ -380,7 +380,27 @@ button a:hover{
     }
 } 
 
-
-
+.CorrectPopUp {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .FormPopUp {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-45%, 5%);
+    border: 2px solid rgb(39, 107, 174);
+    z-index: 9;
+  }
+  .formCorrect {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+  }
+.hidden{
+    display:none;
+}
 
 
