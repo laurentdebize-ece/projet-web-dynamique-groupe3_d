@@ -56,7 +56,7 @@
     while ($matiere = $tabMatiere->fetch()){
         if ($matiere['nomMat'] == $nomMat){
             
-            $tabCompetence = $bdd->query('SELECT * FROM competences JOIN matcomp ON competences.idCompetence = matcomp.IdCompetence AND matcomp.IdMat = ' . $matiere['idMat']);
+            $tabCompetence = $bdd->query('SELECT * FROM competences JOIN matcomp ON competences.idCompetence = matcomp.IdCompetence AND matcomp.IdMat = ' . $matiere['idMat'] . ' ORDER BY competences.nomCompetence ASC');
             ?>
                 <div class='casier-compte'>
                     <h1><?php echo ucfirst($matiere['nomMat']); ?></h1>

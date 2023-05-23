@@ -1,12 +1,11 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Evaluation</title>
+    <title>Veuillez patienter...</title>
 </head>
 <body>
     <?php
@@ -36,21 +35,30 @@
         $idComp = $_GET['idComp'];
         $idEtu = $_SESSION['id'];
     }
-    if(isset($_GET['idEval'])){
-        $idEval = $_GET['idEval'];
+
+    $option = $_POST['option'];
+
+    $etudiant = $bdd->query('SELECT * FROM etudiant WHERE IdEtudiant = '.$idEtu);
+    $etudiant = $etudiant->fetch();
+
+    $classe = $bdd->query('SELECT * FROM classe WHERE IdClasse = '.$etudiant['IdClasse']);
+    $classe = $classe->fetch();
+
+    $comp = $bdd->query('SELECT * FROM competence WHERE IdCompetence = '.$idComp);
+    
+    $matieres = $bdd->query('SELECT * FROM matieres
+    JOIN matcomp ON matieres.idMat = matcomp.IdMat
+    JOIN competence ON matcomp.IdCompetence = competence.IdCompetence
+    WHERE competence.IdCompetence = '.$idComp);
+
+    while($mat = $matieres->fetch()){
+        
     }
+
+
+    $date = date("Y-m-d");
+    $bdd->query('INSERT INTO eval (date, IdEtu, IdProf) VALUES (NOW(), ' . $idEtu . ')');
+
     ?>
-    <div class="head"> 
-    <h1>Vous pouvez à présent vous évaluer !</h1>
-    <a href="etudiant.php"><button type="submit" id="retour" value=retour>Retour</button></a>
-    </div>
-    <form method='post' action='traitement_evaluation.php?idComp=<?php echo $idComp; echo (isset($_GET['idEval']))? "&idEval=".$_GET['idEval'] : ;?>'>
-        <select>
-            <option name='option' value="1">Acquis</option>
-            <option name='option' value="2">En cours d'acqisition</option>
-            <option name='option' value="3">Non acquis</option>
-        </select>
-        <input type='submit' value='Valider'>
-    </form>
 </body>
 </html>
