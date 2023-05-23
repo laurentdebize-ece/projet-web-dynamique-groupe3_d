@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="sideblocks">
-                <h2>Mes Corrections</h2>
+                <h2>Mes Corrections à venir</h2>
                 <div class="fakeimg">
                     <table>
                         <tr>
@@ -103,46 +103,46 @@
                             <td>
                                 <b>Niveau</b>
                             </td>
-                            <td>
-                                <b>Commentaire</b>
-                            </td>
+                    
                             <td>
                                 <b>Corriger </b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT DISTINCT * FROM niveau AS n, eval AS ev, etudiant AS e, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.IdProf="' . $_SESSION['id'] . '"  
-                        ');
-                        while ($donnees = $id->fetch()) {
+                        <?php
+                        $evaluation = $bdd->query('SELECT * FROM eval AS ev, etudiant AS e, evalcomp AS ec, competences AS c, niveau AS n WHERE ev.date >= "' . date("Y-m-d", $date) . '" AND ev.IdProf= "'.$_SESSION['id'].'" AND e.IdEtudiant = ev.IdEtu AND ec.IdEval=ev.idEval AND c.idCompetence=ec.IdComp AND n.idNiv=c.IdNiv ORDER BY ev.date');
+
+                        while ($donnees = $evaluation->fetch()) {
                         ?>
                             <tr>
-                                <td>
-                                    <b><?php echo $donnees['nomCompetence']; ?></b>
+                                <td> <?php echo $donnees['nomCompetence']; ?> </td>
+                                <td> <?php echo $donnees['date']; ?></td>
+
+                                <td> <?php echo $donnees['prenomEtu'] . " " . $donnees['nomEtu']; ?></td>
+                                <td> <?php switch ($donnees['niv']) {
+                                            case 0: {
+                                                    echo "NON EVALUÉ";
+                                                    break;
+                                                }
+                                            case 1: {
+                                                    echo "EN COURS D'AQUISITION";
+                                                    break;
+                                                }
+                                            case 2: {
+                                                    echo "AQUIS";
+                                                    break;
+                                                }
+                                            case 3: {
+                                                    echo "NON AQUIS";
+                                                    break;
+                                                }
+                                        }
+                                        ?>
                                 </td>
-                                <td><?php echo $donnees['date']; ?> </td>
-                                <td><?php echo $donnees['nomEtu'] . " " . $donnees['prenomEtu']; ?></td>
-                                <td><?php switch ($donnees['niv']) {
-                                        case 0: {
-                                                echo "NON EVALUÉ";
-                                                break;
-                                            }
-                                        case 1: {
-                                                echo "EN COURS D'AQUISITION";
-                                                break;
-                                            }
-                                        case 2: {
-                                                echo "AQUIS";
-                                                break;
-                                            }
-                                        case 3: {
-                                                echo "NON AQUIS";
-                                                break;
-                                            }
-                                    } ?></td>
-                                <td><?php echo $donnees['texte']; ?></td>
-                                <td><input type=button id="correction" name="correction" value="Correction"></td>
+                                <td> <input type=button id="eval" name="eval" value="Correction"> </td>
                             </tr>
                         <?php
                         }
+
                         ?>
 
                     </table>
@@ -155,7 +155,21 @@
                 <div class="fakeimg" style="height:100px;"></div>
             </div>
             <div class="sideblocks">
-                <h2>Mes corrections en cours</h2>
+                <h2>Correction archivées</h2>
+                <p>
+                <?php $eval = $bdd->query('SELECT * FROM eval AS ev, etudiant AS e, evalcomp AS ec, competences AS c, niveau AS n WHERE ev.date < "' . date("Y-m-d", $date) . '" AND ev.IdProf= "'.$_SESSION['id'].'" AND e.IdEtudiant = ev.IdEtu AND ec.IdEval=ev.idEval AND c.idCompetence=ec.IdComp AND n.idNiv=c.IdNiv ORDER BY ev.date');
+                while ($donnees = $eval->fetch()) {
+                ?>
+                    <div class="fakeimg">
+                        <p> Compétence: <?php echo $donnees['nomCompetence'] . "" . ""; ?>
+                        <a href="navigationPromoProf.php"><input type="button" id="s'auto-évaluer" name="AutoEval" value="Modifier"></a>
+                        </p>
+    
+                <?php
+                }
+                
+                ?>
+                </div>
             </div>
             <div class="sideblocks">
                 <h3>Follow Me</h3>
