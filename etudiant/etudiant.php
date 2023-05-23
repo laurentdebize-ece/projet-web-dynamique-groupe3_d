@@ -7,26 +7,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>Accueil_etudiant</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
     </script>
 </head>
 
 <body>
     <?php
-    // pour recuperer la date du jour 
-    $date = time();
-    try {
-        $bdd = new PDO(
-            'mysql:host=localhost;dbname=omnes_skills;
-    charset=utf8',
-            'root',
-            'root',
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-        );
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    // Afficher le nom et prenom de la personne connectee
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+    echo "<h1>Bienvenue $prenom ".str_replace('_', ' ',$nom)."</h1>";
+
     ?>
     <div class="header">
         <div class="img"> </div>
@@ -38,7 +30,7 @@
         <a href="mes_matieres.php">Mes matières</a>
         <a href="../eval.php">Mes évaluations</a>
         <a href="../eval_a_venir.php">Evaluations à venir</a>
-        <a href="../mon_espace.php" style="float:right">Mon espace</a>
+        <a href="mon_espace.php" style="float:right">Mon espace</a>
     </div>
 
 
@@ -77,7 +69,7 @@
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="../mon_espace.php">
+                                <a href="mon_espace.php">
                                     <h3>Mon espace</h3>
                             </div>
 

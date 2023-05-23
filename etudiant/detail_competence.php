@@ -25,7 +25,17 @@
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
             );
         } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+            try {
+                $bdd = new PDO(
+                    'mysql:host=localhost;dbname=omnes_skills;
+        charset=utf8',
+                    'root',
+                    '',
+                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+                );
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
         }
         ?>
         <div class="header">
@@ -38,7 +48,7 @@
             <a href="mes_matieres.php">Mes matières</a>
             <a href="../eval.php">Mes évaluations</a>
             <a href="../eval_a_venir.php">Evaluations à venir</a>
-            <a href="../mon_espace.php" style="float:right">Mon espace</a>
+            <a href="mon_espace.php" style="float:right">Mon espace</a>
         </div>
 
 
@@ -77,7 +87,7 @@
                             <div class="carte carte4">
 
                                 <div class="carte_img carte_img4">
-                                    <a href="../mon_espace.php">
+                                    <a href="mon_espace.php">
                                         <h3>Mon espace</h3>
                                 </div>
 
@@ -110,7 +120,7 @@
                                     <b>Évaluation</b>
                                 </td>
                             </tr>
-                            <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
+                            <?php /*$id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.date > "' . date("Y-m-d", $date) . '" AND ev.IdEtu="' . $_SESSION['id'] . '"  
     AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
                             while ($donnees = $id->fetch()) {
                             ?>
@@ -143,7 +153,7 @@
                                 </tr>
                             <?php
                             }
-                            ?>
+                            */?>
                         </table>
                     </div>
                 </div>
@@ -204,19 +214,56 @@
         </div>
 
 
+
     <?php
     if (isset($_GET['nomComp']) && isset($_GET['idComp'])) {
         $nomCompSelect = $_GET['nomComp'];
         $idCompSelect = $_GET['idComp'];
-        echo "<br>idComp : " . $idCompSelect . "<br>nomComp : " . $nomCompSelect;
+        $idEtudiant = $_SESSION['id'];
     }
-    try {
-        $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+    
+    $request = $bdd->query('SELECT * FROM eval JOIN evalcomp ON eval.idEval = evalcomp.IdEval AND evalcomp.IdComp = '.$idCompSelect);
+    if ($request->rowCount() == 0){
+        ?>
+        <div class='competence-casier-container--1'>
+            <div class='competence-casier-container-title'>
+                <h1><?php echo $nomCompSelect; ?></h1>
+            </div>
+            <div class='competence-casier-container-corps'>
+                <p>Vous n'avez pas encore d'évaluation pour cette compétence</p>   
+            </div>
+            <div class='competence-casier-container-button'>S'évaluer</div>
+        </div>
+        <?php
     }
-
-
+    else{
+        $eval = $request->fetch();
+    
+        $request = $bdd->query('SELECT * FROM niveau JOIN competences ON niveau.idNiv = competences.IdNiv AND competences.IdCompetence = '.$idCompSelect);
+        $niveau = $request->fetch();
+        
+        $request = $bdd->query('SELECT * FROM commentaire WHERE IdNiv = '.$niveau['idNiv']);
+        $commentaire = $request->fetch();
+        
+        ?>
+        
+            <div class='competence-casier-container-<?php echo $niveau['niv']; ?>'>
+                <div class='competence-casier-container-title'>
+                    <h1><?php echo $nomCompSelect; ?></h1>
+                </div>
+                <div class='competence-casier-container-corps'>
+                    <p>Evaluation du <?php echo date("d/m/Y", strtotime($eval['date'])); ?>.</p>
+                    <p>Note : <?php echo $niveau['niv']; ?>/3</p>   
+                    <p>Commentaire : <?php echo $commentaire['texte']; ?></p>
+                </div>
+                <div class='competence-casier-container-button'>
+                    <a href="evaluation.php?nomComp=">S'évaluer</a>
+                </div>
+            </div>
+        <?php
+        
+    }
+    
     ?>
 </body>
 
