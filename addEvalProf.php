@@ -23,49 +23,61 @@
     }
     ?>
 
-    <?php 
+    <?php
+    if (isset($_POST['date'], $_POST['NomComp'], $_SESSION['id'], $_POST['classe'], $_POST['promo'])) {
+        $_SESSION['popUp']=1;
         $NewDate = htmlspecialchars($_POST['date']);
         $comp = htmlspecialchars($_POST['NomComp']);
         $IDprof = htmlspecialchars($_SESSION['id']);
         $classe = htmlspecialchars($_POST['classe']);
         $promo = htmlspecialchars($_POST['promo']);
         $response = $bdd->query("SELECT * FROM etudiant AS e, classe AS c, promotion AS p WHERE c.IdClasse=e.IdClasse AND c.IdPromotion=p.ID AND classeNum='$classe' AND anneeDePromo='$promo' ");
-        while($donnees = $response->fetch()){
-            $req ="INSERT INTO 'eval' ('date', 'IdEtu', 'IdProf') VALUES ( :NewDate,:IdEtudiant,:id)";
-            $InsertStatement = $bdd->prepare($req); 
+        if ($donnees['IdEtudiant']==NULL){
+            $_SESSION['popUp']=-1;
+            echo "location.href = 'addEvalProfForm.php';";
+        }
+        while ($donnees = $response->fetch()) {
+            //echo $donnees['IdEtudiant']."<br>";
+            $req = "INSERT INTO `eval`(`date`, `IdEtu`, `IdProf`) VALUES( :NewDate,:IdEtudiant,:id)";
+            $InsertStatement = $bdd->prepare($req);
             $InsertStatement->bindParam(':NewDate', $NewDate);
-            $InsertStatement->bindParam(':IdEtudiant', $donnees['idEtudiant']);
+            $InsertStatement->bindParam(':IdEtudiant', $donnees['IdEtudiant']);
             $InsertStatement->bindParam(':id', $IDprof);
-
-
-            $response2 = $bdd->query("SELECT * FROM competences AS c WHERE nomCompetence='$comp'");
-            $IdEtudiant = $donnees['idEtudiant'];
-            $response3 = $bdd->query("SELECT idEval FROM eval AS c WHERE 'date'='$NewDate' AND IdEtu='$IdEtudiant' AND IdProf='$IDprof'");
-            $idEval= $response3->fetch();
-            while($donnees2 = $response2->fetch()){
-                $req2 = "INSERT INTO 'evalcomp' ('IdEval', 'IdComp') VALUES( :idEval, ':idComp')";               
-                $exec=$bdd->prepare($req2);
-                $exec->bindParam(':idEvale', $idEval['idEval']);
-                $exec->bindParam(':idComp', $donnees2['idCompetence']);
-                if ($exec->execute()) {
-                    echo "succès";
-                } else {
-                    echo "Impossible de créer l'enregistrement";
-                }
+            if ($InsertStatement->execute()) {
+                echo "Nouveau enregistrement créé avec succès";
+            } else {
+                echo "Impossible de créer l'enregistrement";
             }
-        } 
-        if ($insertStatement->execute()) {
-            echo "Nouveau enregistrement créé avec succès";
-        } else {
-            echo "Impossible de créer l'enregistrement";
-        }       
+            $response2 = $bdd->query("SELECT * FROM competences AS c WHERE nomCompetence='$comp' AND IdNiv=4");
+            $IdEtudiant = $donnees['IdEtudiant'];
+            $response3 = $bdd->query("SELECT * FROM eval AS c WHERE `date`='$NewDate' AND IdEtu='$IdEtudiant' AND IdProf='$IDprof'");
+            $idEval = $response3->fetch();
+            $donnees2 = $response2->fetch();
+            if ($donnees2['idCompetence']==NULL){
+                $_SESSION['popUp']=-1;
+                echo "location.href = 'addEvalProfForm.php';";
+            }
+            $req2 = "INSERT INTO `evalcomp` (`IdEval`, `IdComp`) VALUES(:idEval, :idComp)";
+            $exec = $bdd->prepare($req2);
+            $exec->bindParam(':idEval', $idEval['idEval']);
+            $exec->bindParam(':idComp', $donnees2['idCompetence']);
+            if ($exec->execute()) {
+                echo "succès";
+            } else {
+                echo "Impossible de créer l'enregistrement";
+            }
+        }
+    }
+    else{
+        $_SESSION['popUp']=-1;
+    }
     ?>
 
 
     <script>
-        //location.href='addEvalProfForm.php';
+        location.href = 'addEvalProfForm.php';
     </script>
-    
+
 </body>
 
 </html>
