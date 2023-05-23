@@ -129,21 +129,21 @@
                                 </td>
                                 <td><?php echo $donnees['date']; ?> </td>
                                 <td><?php echo $donnees['nomProf'] . " " . $donnees['prenomProf']; ?></td>
-                                <td><?php switch ($donnees['niv']) {
-                                        case 0: {
-                                                echo "NON EVALUÉ";
-                                                break;
-                                            }
+                                <td><?php switch ($donnees['idNiv']) {
                                         case 1: {
-                                                echo "EN COURS D'AQUISITION";
+                                                echo "AQUIS";
                                                 break;
                                             }
                                         case 2: {
-                                                echo "AQUIS";
+                                                echo "EN COURS D'AQUISITION";
                                                 break;
                                             }
                                         case 3: {
                                                 echo "NON AQUIS";
+                                                break;
+                                            }
+                                        case 4: {
+                                                echo "NON EVALUÉ";
                                                 break;
                                             }
                                     } ?></td>
