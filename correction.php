@@ -92,7 +92,7 @@
                                     }
                                     ?>
                             </td>
-                            <td> <?php echo "<input type=button id='eval' name='eval' value='Correction' onclick=correction(" . $donnees['IdEtudiant'] . "," . $donnees['IdEtudiant'] . "," . $donnees['IdEtudiant'] . "," . $donnees['idNiv'] . ")></td>"; ?>
+                            <td> <?php echo "<input type=button id='eval' name='eval' value='Correction' onclick=correction(" . $donnees['IdEtudiant'] . "," . $donnees['idCompetence'] . "," . $donnees['idEval'] . "," . $donnees['idNiv'] . ")></td>"; ?>
                         </tr>
 
                     <?php
@@ -116,9 +116,9 @@
                     <option value="3">Non Acquis</option>
                     <option value="4">Non Evalué</option>
                 </select>
-                <input type="text" id="IdEtu" name="IdEtu" class=hidden />
-                <input type="text" id="IdComp" name="IdComp" class=hidden/>
-                <input type="text" id="IdEval" name="IdEval" class=hidden />
+                <input type="text" id="IdEtu" name="IdEtu" class=hidden style="display:none" />
+                <input type="text" id="IdComp" name="IdComp" class=hidden style="display:none"/>
+                <input type="text" id="IdEval" name="IdEval" class=hidden style="display:none"/>
                 <label for="Commentaire">Commentaire</label>
                 <input type="text" id="Commentaire" name="Commentaire" required />
                 <input type="submit" class="Confirmer" value=Confirmer>
