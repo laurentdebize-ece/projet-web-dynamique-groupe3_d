@@ -26,6 +26,17 @@
         die('Erreur : ' . $e->getMessage());
     }
     ?>
+
+    <script>
+        function correction(IdEtu, IdComp, IdEval, idNiv) {
+            document.getElementById("progression").value=idNiv;
+            document.getElementById("IdEtu").value=IdEtu;
+            document.getElementById("IdComp").value=IdComp;
+            document.getElementById("IdEval").value=IdEval;
+            document.getElementById("popupForm").style.display = "block";
+        }
+    </script>
+
     <div class="head">
         <h1>Vous pouvez à présent corriger l'évaluation !</h1>
 
@@ -52,7 +63,7 @@
                         </td>
                     </tr>
                     <?php
-                    $evaluation = $bdd->query('SELECT * FROM eval AS ev, etudiant AS e, evalcomp AS ec, competences AS c, niveau AS n WHERE ev.date >= "' . date("Y-m-d", $date) . '" AND ev.IdProf= "' . $_SESSION['id'] . '" AND e.IdEtudiant = ev.IdEtu AND ec.IdEval=ev.idEval AND c.idCompetence=ec.IdComp AND n.idNiv=c.IdNiv AND ORDER BY ev.date');
+                    $evaluation = $bdd->query('SELECT * FROM eval AS ev, etudiant AS e, evalcomp AS ec, competences AS c, niveau AS n WHERE ev.date >= "' . date("Y-m-d", $date) . '" AND ev.IdProf= "' . $_SESSION['id'] . '" AND e.IdEtudiant = ev.IdEtu AND ec.IdEval=ev.idEval AND c.idCompetence=ec.IdComp AND n.idNiv=c.IdNiv ORDER BY ev.date');
 
                     while ($donnees = $evaluation->fetch()) {
                     ?>
@@ -81,8 +92,9 @@
                                     }
                                     ?>
                             </td>
-                            <td> <a href="correction.php"><input type=button id="eval" name="eval" value="Correction"> </a></td>
+                            <td> <?php echo "<input type=button id='eval' name='eval' value='Correction' onclick=correction(" . $donnees['IdEtudiant'] . "," . $donnees['idCompetence'] . "," . $donnees['idEval'] . "," . $donnees['idNiv'] . ")></td>"; ?>
                         </tr>
+
                     <?php
                     }
 
@@ -92,6 +104,33 @@
             </div>
         </div>
     </div>
+
+    <div class=CorrectPopUp>
+        <div class="FormPopUp" id="popupForm">
+            <form action="correctionSQL.php" method="post" class="formCorrect">
+                <h2>Correction</h2>
+                <label for="progression">Progression</label>
+                <select name="progression" id="progression">
+                    <option value="1">Acquis</option>
+                    <option value="2">En Cours d'acquisition</option>
+                    <option value="3">Non Acquis</option>
+                    <option value="4">Non Evalué</option>
+                </select>
+                <input type="text" id="IdEtu" name="IdEtu" class=hidden style="display:none" />
+                <input type="text" id="IdComp" name="IdComp" class=hidden style="display:none"/>
+                <input type="text" id="IdEval" name="IdEval" class=hidden style="display:none"/>
+                <label for="Commentaire">Commentaire</label>
+                <input type="text" id="Commentaire" name="Commentaire" required />
+                <input type="submit" class="Confirmer" value=Confirmer>
+                <button type="button" class="Fermer" onclick="Fermer()">Fermer</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function Fermer() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+    </script>
 
     <a href="prof.php"><button type="submit" id="retour" value=retour>Retour</button></a>
     </div>

@@ -10,35 +10,85 @@
     <!--<link rel="stylesheet" href="../etudiant/style.css">-->
     <link rel="stylesheet" href="adminStyle.css">
 </head>
+    <?php
+    
+    $idpromo = $_GET['id'];
 
+    $json_idpromo = json_encode($idpromo);
+    
+    ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#supprimerClasse").click(function () {
+            var id_classe = $('input[name="selecRad"]:checked').val();
+                $.ajax({
+                    url: 'supprimerClasseAdmin.php',
+                    type: 'POST',
+                    data: {
+                        id_classe: id_classe
+                    },
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+        });
+
+        $("#ajouterClasse").click(function () {
+            var id_classe = $('#newClasse').val();
+            var id_promo = <?php echo $json_idpromo;?>;
+            
+            $.ajax({
+                    url: 'traitementAdminClasse.php',
+                    type: 'POST',
+                    data: {
+                        id_classe: id_classe,
+                        id_promo: id_promo
+                    },
+                    success: function (data) {
+                        
+                        location.reload();
+                    }
+                });
+            
+        });
+    });
+</script>
 <body>
 
 
     <?php
-
-    if (isset($_GET['anneeDePromo'])) {
-        $anneeDePromo = $_GET['anneeDePromo'];
+    
+    $idpromo = $_GET['id'];
+    echo 
+    "<script>
+        var id_promo = ".$idpromo.";
+    </script>";
+    if (isset($_GET['id'])) {
+        $idpromo = $_GET['id'];
     } else {
     }
+    
 
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=omnes_skills; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
+    
     $tabPromo = $bdd->query('SELECT * FROM promotion');
     while ($promotion = $tabPromo->fetch()) {
-        if ($promotion['anneeDePromo'] == $anneeDePromo) {
+        if ($promotion['ID'] == $idpromo) {
             $ID = $promotion['ID'];
             $tabClasse = $bdd->query('SELECT * FROM classe JOIN promotion ON classe.IdPromotion = promotion.ID WHERE classe.IdPromotion = '.$ID);
     ?>
             <section>
-                <h1><?php echo ucfirst($promotion['anneeDePromo']); ?></h1>
+                <h1 id='id_promo' name='<?php echo $promotion['ID'];?>'><?php echo ucfirst($promotion['anneeDePromo']); ?></h1>
                 <div class="casier">
                     <?php
                     while ($classe = $tabClasse->fetch()) {
                     ?>
-                        <a href="detailClasseAdmin.php?IdClasse=<?php echo $classe['IdClasse']; ?>">
+                        <a href="maClasse.php?IdClasse=<?php echo $classe['IdClasse']; ?>">
                             <div class="casier-container" id="<?php echo $classe['classeNum']; ?>" name="<?php echo $classe['classeNum']; ?>">
                                 <div class="casier-titre">
                                     <div class="casier-container-img">
@@ -66,23 +116,18 @@
     };
 
 
-
-   
-
     ?>
-
-   
 
 <button class="open-button" onclick="openForm()">+</button>
 
 <div class="form-popup" id="myForm">  <!-- ADD une classe a la promotion -->
-    <form action="traitementAdminClasse.php" method="post" class="form-container">
-        <h3>Création d'une nouvelle classe</h3>
+    <form method="post" class="form-container" >
+        <h3>Création d'une nouvelle classe :  </h3>
 
         <label for="newClasse"><b> Numero De Classe : <br></label>
         <input type="text" placeholder="Entrez le numéro" id="newClasse" name="newClasse" required>
 
-        <button type="submit" class="btn">Enregistrer</button>
+        <button type="submit" class="btn" id="ajouterClasse" >Enregistrer</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
 </div>  <!-- FIN ADD une classe -->
@@ -97,7 +142,7 @@
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
         <form class="modal-content" action="supprimerClasseAdmin.php" method="post">
             <div class="container">
-                <h1>Quelle classe souhaitez vous supprimer ? </h1>
+                <h1 value="<?php echo $promotion['ID']?>" name="idPromo">Quelle classe souhaitez vous supprimer ? </h1>
 
                 <?php
                 try {
@@ -141,7 +186,7 @@
 
                 <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
-                    <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Supprimer</button>
+                    <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="deletebtn" id ="supprimerClasse" >Supprimer</button>
                 </div>
             </div>
         </form>
