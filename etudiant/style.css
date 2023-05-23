@@ -13,6 +13,8 @@ body {
     background-color:rgb(168, 212, 255); 
 }
 .img{
+    margin-top: -190px;
+    margin-left: -200px;
     float: left;
     position: relative; 
     background-color: transparent;
@@ -27,20 +29,31 @@ body {
     background-image: url(../images/logo.png);
 }
 .welcom_mess{
-    position: relative;
+    font-size: 8rem;
+    transform: translate(3%, -50%);
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
-    font-size: 10rem;
+    text-align: center; 
+    font-family:sans-serif;
+    font-weight: bolder;
     color: transparent;
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 3px white;
     cursor: pointer; 
     transition: all .3s ease; 
 }
 .welcom_mess:hover{
-    color: white; 
+    color:rgb(255, 253, 241); 
     -webkit-text-stroke: 0;
 
+}
+.Hello {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color :rgb(0, 60, 112); 
+    text-shadow: 2px 2px white;
 }
 nav{ /* les liens */
     display: flex; 
@@ -154,6 +167,7 @@ h2{
     font-size: 50px;
   }
 .sideblocks{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 background-color: rgb(219, 242, 255);
 padding: 60px; 
 margin-top: 20px;
@@ -161,10 +175,12 @@ color:black;
 }
 .fakeimg {
     background-color: rgb(161, 209, 224);
-    width: 100%;
-    padding: 20px;
+    background-size: cover;
+    padding: 10px;
+    
   }
   .footer{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 color: white;
 padding: 20px;
 text-align: center;
@@ -189,6 +205,12 @@ a[href^='tel']::before {
 ul li a{
     color: white;
     text-decoration: none;
+}
+.carte_img h3{
+    text-decoration: none;
+}
+.carte_img h3:hover{
+    color: black;
 }
 @media screen and (max-width:800px){
     .leftcolumn, .rightcolumn{
@@ -484,7 +506,11 @@ ul li a{
 }
 
 .casier-compte{
-    background-color: rgb(62, 165, 255);
+    margin-top:70px; 
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(39, 107, 174);
     color: rgb(0, 0, 0);
     width: 90%;
     text-decoration: none;
@@ -652,3 +678,35 @@ p.text{
     padding-right: 300 px;
 
 }
+.head {
+    text-align: center;
+    background-color: rgb(39, 73, 125) ;
+    padding: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    .head h1{
+        font-family: sans-serif;
+        color: white;
+        font-size: 3rem;
+    }
+    .head button{
+        border-radius: 20px;
+        border: 1px solid white;
+        background-color: rgb(227, 245, 255);
+        color: rgb(0, 60, 112);
+        font-weight: bold;
+        padding: 8px 20px;
+        letter-spacing: 1px;
+        outline: none;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        float:right; 
+        margin-top: -80px;
+    
+    }
+    .head button:hover{
+        transform: scale(0.95);
+        background-color: white;
+        color: rgb(0,60,112);
+        cursor:grab;
+    }

@@ -72,6 +72,7 @@
                                 $_SESSION ['mail'] = $donnees['mailProf']; 
                                 $_SESSION ['mdp'] = $donnees['mdp']; 
                                 $_SESSION['id'] = $donnees['IdProf']; 
+                                $_SESSION['popUp'] = 0; 
                                 $trouve=1;
 
                             }

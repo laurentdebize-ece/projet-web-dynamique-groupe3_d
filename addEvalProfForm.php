@@ -68,4 +68,16 @@
 
 </body>
 
+<?php 
+    if ($_SESSION['popUp']==1){
+        echo "<script>alert('L`évaluation a bien été ajoutée');</script>";
+        $_SESSION['popUp']=0;
+    }
+    if ($_SESSION['popUp']==-1){
+        echo "<script>alert('Problème : une information n`existe pas dans la base de données');</script>";
+        $_SESSION['popUp']=0;
+    }
+    
+    ?>
+
 </html>
