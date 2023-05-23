@@ -148,7 +148,7 @@
                                             }
                                     } ?></td>
                                 <td><?php echo $donnees['texte']; ?></td>
-                                <td><input type=button id="s'auto-évaluer" name="AutoEval" value="S'auto-évaluer"></td>
+                                <td><a href="evaluation.php"><input type=button id="s'auto-évaluer" name="AutoEval" value="S'auto-évaluer"></a></td>
                             </tr>
                         <?php
                         }

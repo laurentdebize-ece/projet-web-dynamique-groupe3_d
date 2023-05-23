@@ -76,6 +76,7 @@
                 }
             ?>
             <button id='ajouter'>Ajouter</button>
+            <button id='return'>Retour</button>
         </div>
     </div class>
     

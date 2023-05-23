@@ -145,7 +145,7 @@
                                         }
                                         ?>
                                 </td>
-                                <td> <input type=button id="eval" name="eval" value="Correction"> </td>
+                                <td> <a href="correction.php"><input type=button id="eval" name="eval" value="Correction"> </a></td>
                             </tr>
                         <?php
                         }
