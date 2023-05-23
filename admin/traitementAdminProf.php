@@ -34,17 +34,6 @@ $insertStatement->bindParam(':newNomProf', $newNomProf);
 $insertStatement->bindParam(':newPrenomProf', $newPrenomProf);
 $insertStatement->bindParam(':newMdp', $newMdp);
 
-if(isset($_POST['submit']))
-{
-    if(!empty($_POST['liste_matiere'])){
-        foreach($POST['liste_matiere']as $valeur)
-        {
-            echo $valeur ."<br>";
-            $valeur->prepare("INSERT INTO professeurs (mailProf, nomProf, prenomProf, mdp) 
-    VALUES (:newMailProf, :newNomProf, :newPrenomProf, :newMdp)");
-        }
-    }
-}
 
 if ($insertStatement->execute()) {
     echo "Nouveau enregistrement créé avec succès";
@@ -53,6 +42,5 @@ if ($insertStatement->execute()) {
 }
 
 ?>
-<!--
-<meta http-equiv="refresh" content="0;url=adminPromo.php">
--->
+
+<meta http-equiv="refresh" content="0;url=adminProf.php">
