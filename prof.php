@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Accueil_etudiant</title>
+    <title>Accueil_prof</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
@@ -36,10 +36,10 @@
     <div class="nav">
         <div class="nav">
             <a href="prof.php">Home</a>
-            <a href=".php">Mes matières</a>
-            <a href=".php">Mes classes</a>
-            <a href=".php">Programmer une évaluation</a>
-            <a href="mon_espace.php" style="float:right">Mon espace</a>
+            <a href="matieres_prof.php">Matières & compétences</a>
+            <a href="navigationPromoProf.php">Mes classes</a>
+            <a href="addEvalProfForm.php">Programmer une évaluation</a>
+            <a href="mon_espace_prof.php" style="float:right">Mon espace</a>
         </div>
     </div>
 
@@ -51,8 +51,8 @@
                     <div class="carte-container">
                         <div class="carte carte1">
                             <div class="carte_img carte_img1">
-                                <a href=".php">
-                                    <h3>Mes matières</h3>
+                                <a href="matieres_prof.php">
+                                    <h3>Matières & compétences</h3>
                                 </a>
                             </div>
                         </div>
@@ -72,14 +72,12 @@
                                 <a href="addEvalProfForm.php">
                                     <h3>Programmer une évaluation</h3>
                                 </a>
-                        <a href="navigationPromoProf.php"><h3>Modifier une compétences</h3></a>
-
                             </div>
                         </div>
                         <div class="carte carte4">
 
                             <div class="carte_img carte_img4">
-                                <a href="mon_espace.php">
+                                <a href="mon_espace_prof.php">
                                     <h3>Mon espace</h3>
                             </div>
 
@@ -112,8 +110,8 @@
                                 <b>Corriger </b>
                             </td>
                         </tr>
-                        <?php $id = $bdd->query('SELECT * FROM niveau AS n, eval AS ev, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE p.IdProf="' . $_SESSION['id'] . '"  
-    AND ev.idEval= ec.IdEval AND c.idCompetence = ec.IdComp AND p.IdProf=ev.IdProf AND n.idNiv = c.IdNiv AND com.IdEval=ev.idEval ORDER BY ev.date ');
+                        <?php $id = $bdd->query('SELECT DISTINCT * FROM niveau AS n, eval AS ev, etudiant AS e, evalcomp AS ec,competences AS c, commentaire AS com,  professeurs AS p WHERE ev.IdProf="' . $_SESSION['id'] . '"  
+                        ');
                         while ($donnees = $id->fetch()) {
                         ?>
                             <tr>
