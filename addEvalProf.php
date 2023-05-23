@@ -24,24 +24,46 @@
     ?>
 
     <?php 
-        $response = $bdd->query("SELECT * FROM etudiant AS e, classe AS c, promotion AS p WHERE c.IdClasse=e.IdClasse AND c.IdPromotion=p.ID AND classeNum=$_POST[classe] AND anneeDePromo=$_POST[promo] ");
+        $NewDate = htmlspecialchars($_POST['date']);
+        $comp = htmlspecialchars($_POST['NomComp']);
+        $IDprof = htmlspecialchars($_SESSION['id']);
+        $classe = htmlspecialchars($_POST['classe']);
+        $promo = htmlspecialchars($_POST['promo']);
+        $response = $bdd->query("SELECT * FROM etudiant AS e, classe AS c, promotion AS p WHERE c.IdClasse=e.IdClasse AND c.IdPromotion=p.ID AND classeNum='$classe' AND anneeDePromo='$promo' ");
         while($donnees = $response->fetch()){
+            $req ="INSERT INTO 'eval' ('date', 'IdEtu', 'IdProf') VALUES ( :NewDate,:IdEtudiant,:id)";
+            $InsertStatement = $bdd->prepare($req); 
+            $InsertStatement->bindParam(':NewDate', $NewDate);
+            $InsertStatement->bindParam(':IdEtudiant', $donnees['idEtudiant']);
+            $InsertStatement->bindParam(':id', $IDprof);
 
-            $req ="INSERT INTO 'eval' ('date', 'IdEtu', 'IdProf') VALUES ( '$_POST[date]','$donnees[IdEtudiant]','$_SESSION[id]')";
-            $bdd->exec($req); //ca ne fonctionne pas jsp pourquoi
 
-            $response2 = $bdd->query("SELECT * FROM competences AS c WHERE nomCompetence=$_POST[comp] ");
-            $response3 = $bdd->query("SELECT idEval FROM eval AS c WHERE 'date'=$_POST[date] AND IdEtu=$donnees[idEtudiant] AND IdProf=$_SESSION[id]");
+            $response2 = $bdd->query("SELECT * FROM competences AS c WHERE nomCompetence='$comp'");
+            $IdEtudiant = $donnees['idEtudiant'];
+            $response3 = $bdd->query("SELECT idEval FROM eval AS c WHERE 'date'='$NewDate' AND IdEtu='$IdEtudiant' AND IdProf='$IDprof'");
             $idEval= $response3->fetch();
             while($donnees2 = $response2->fetch()){
-                $req2 = "INSERT INTO 'evalcomp' ('IdEval', 'IdComp') VALUES( '$idEval','$donnees2[idCompetence]')";
-                $bdd->exec($req2);
+                $req2 = "INSERT INTO 'evalcomp' ('IdEval', 'IdComp') VALUES( :idEval, ':idComp')";               
+                $exec=$bdd->prepare($req2);
+                $exec->bindParam(':idEvale', $idEval['idEval']);
+                $exec->bindParam(':idComp', $donnees2['idCompetence']);
+                if ($exec->execute()) {
+                    echo "succès";
+                } else {
+                    echo "Impossible de créer l'enregistrement";
+                }
             }
-        }        
+        } 
+        if ($insertStatement->execute()) {
+            echo "Nouveau enregistrement créé avec succès";
+        } else {
+            echo "Impossible de créer l'enregistrement";
+        }       
     ?>
 
+
     <script>
-        location.href='addEvalProfForm.php';
+        //location.href='addEvalProfForm.php';
     </script>
     
 </body>
